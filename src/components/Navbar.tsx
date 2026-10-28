@@ -118,7 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
               className="px-3 py-2.5 rounded-lg hover:bg-[#F0ECE1] transition-colors flex items-center justify-between min-h-[44px]"
             >
               <span>Rooms & Rates</span>
-              <span className="text-xs text-[#2D4A3E] font-semibold">From ₹600 / night</span>
+              <span className="text-xs text-[#2D4A3E] font-semibold">From ₹900 / night</span>
             </a>
             <a
               href="#facilities"

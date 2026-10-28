@@ -23,7 +23,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const tomorrowStr = tomorrow.toISOString().split('T')[0];
 
   const [selectedRoomId, setSelectedRoomId] = useState(initialRoomId || ROOMS[0].id);
-  const [bedOption, setBedOption] = useState('1 Double Bed (~₹700–₹900)');
+  const [bedOption, setBedOption] = useState('1 Double Bed (₹900–₹1,000)');
   const [extraMattress, setExtraMattress] = useState('No extra mattress');
   const [checkIn, setCheckIn] = useState(initialDates?.checkIn || todayStr);
   const [checkOut, setCheckOut] = useState(initialDates?.checkOut || tomorrowStr);
@@ -186,9 +186,9 @@ Please confirm room availability and the best tariff for these dates. Thank you!
                   onChange={(e) => setBedOption(e.target.value)}
                   className="w-full text-xs bg-white border border-[#DDD5C7] rounded-lg px-3 py-2 text-[#242424] focus:outline-none focus:ring-1 focus:ring-[#2D4A3E]"
                 >
-                  <option value="1 Single Bed (~₹600 / night)">1 Single Bed (~₹600 / night) - 1 Person</option>
-                  <option value="2 Single Beds (~₹800 / night)">2 Single Beds (~₹800 / night) - 2 Persons</option>
-                  <option value="1 Double Bed (~₹700–₹900 / night)">1 Double Bed (~₹700–₹900 / night) - 2 Persons</option>
+                  <option value="1 Single Bed (₹900 / night)">1 Single Bed (₹900 / night) - 1 Person</option>
+                  <option value="2 Single Beds (₹1,000 / night)">2 Single Beds (₹1,000 / night) - 2 Persons</option>
+                  <option value="1 Double Bed (₹900–₹1,000 / night)">1 Double Bed (₹900–₹1,000 / night) - 2 Persons</option>
                 </select>
                 <span className="text-[11px] text-[#7A5835] mt-1 block">
                   Includes 1 table, 2 chairs, free Wi-Fi, clean bed sheets & towels, attached private clean bath (No TV).

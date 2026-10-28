@@ -48,7 +48,7 @@ export default function App() {
         {/* 1 & 2. Hero Section with property overview, Chalakudy river location, and primary CTAs */}
         <Hero onOpenBooking={handleOpenBooking} />
 
-        {/* 3. Room categories and pricing (Non-AC, Standard AC, Spacious AC Triple at ₹1,600) */}
+        {/* 3. Room categories and pricing (Non-AC ₹900–₹1,000, Deluxe AC ₹1,300, Spacious AC Triple ₹1,500–₹1,600) */}
         <RoomsSection onOpenBooking={handleOpenBooking} />
 
         {/* 4. Verified Facilities & Amenities */}
