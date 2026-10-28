@@ -8,18 +8,18 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
   return (
-    <footer className="bg-[#1F1E1B] text-[#C5BCB0] pt-16 pb-12 border-t border-[#36322C]">
+    <footer className="bg-[#1F1E1B] text-[#C5BCB0] pt-16 pb-20 sm:pb-12 border-t border-[#36322C]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#36322C]">
           {/* Brand & Overview (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <a href="/index.html" className="inline-block hover:opacity-90 transition-opacity">
               <h3 className="font-editorial text-2xl text-white font-semibold tracking-wide">
-                CROWN TOURIST HOME
+                Crown Tourist Home
               </h3>
             </a>
             <p className="text-xs text-[#A89F93] leading-relaxed max-w-sm">
-              Honest, clean, and budget-friendly accommodation on Chalakudy - Anamala Road in Pariyaram, Kerala. Clean rooms, attached washroom, clean bed sheets for every guest, free Wi-Fi, and flexible check-in.
+              Honest, clean, and budget-friendly accommodation on Chalakudy - Anamala Road in Pariyaram, Kerala. Clean rooms, attached private washrooms, clean bed sheets & towels for every guest, free Wi-Fi, and flexible check-in.
             </p>
             <div className="pt-2 flex flex-wrap items-center gap-2.5">
               <button

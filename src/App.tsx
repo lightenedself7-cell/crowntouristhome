@@ -9,7 +9,7 @@ import { Hero } from './components/Hero';
 import { RoomsSection } from './components/RoomsSection';
 import { FacilitiesSection } from './components/FacilitiesSection';
 import { HousekeepingSection } from './components/HousekeepingSection';
-import { CSRCheckDamSection } from './components/CSRCheckDamSection';
+import { NearbyExplorer } from './components/NearbyExplorer';
 import { NearbyFoodSection } from './components/NearbyFoodSection';
 import { LocationDirections } from './components/LocationDirections';
 import { GuestReviewsAndFAQ } from './components/GuestReviewsAndFAQ';
@@ -57,8 +57,8 @@ export default function App() {
         {/* 5. Honest Cleanliness & Housekeeping Standards */}
         <HousekeepingSection />
 
-        {/* 6. CSR Check Dam (Charakkudy Check Dam) Attraction with official Google Maps link */}
-        <CSRCheckDamSection />
+        {/* 6. Sightseeing & Nearby Attractions Guide (Athirappilly, Thumboormuzhi, Theme Parks, River) */}
+        <NearbyExplorer />
 
         {/* 7. Nearby Food and Dining Options (Bakeries, tea stalls, multicuisine & highway restaurants) */}
         <NearbyFoodSection />
@@ -73,8 +73,8 @@ export default function App() {
       {/* 10. Contact & Booking Enquiries / Footer */}
       <Footer onOpenBooking={() => handleOpenBooking()} />
 
-      {/* Floating Action Button for instant WhatsApp / Call */}
-      <FloatingActionBar onOpenBooking={() => handleOpenBooking()} />
+      {/* Floating Action Button for instant WhatsApp / Call (hidden when modal is open) */}
+      <FloatingActionBar onOpenBooking={() => handleOpenBooking()} isModalOpen={bookingModalOpen} />
 
       {/* Direct Booking Modal with pre-filled WhatsApp link generator */}
       <BookingModal

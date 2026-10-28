@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Users, BedDouble, Phone, MessageCircle, Sparkles, Clock, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, Users, BedDouble, Phone, MessageCircle, Sparkles, Clock, CheckCircle2, ChevronLeft, ChevronRight, AlertCircle, ExternalLink } from 'lucide-react';
 import { HOTEL_INFO, ROOMS, HERO_SLIDES } from '../data/hotelData';
 
 interface HeroProps {
@@ -7,7 +7,9 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
-  const todayStr = new Date().toISOString().split('T')[0];
+  const today = new Date();
+  const todayStr = today.toISOString().split('T')[0];
+
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const tomorrowStr = tomorrow.toISOString().split('T')[0];
@@ -16,7 +18,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   const [checkOut, setCheckOut] = useState(tomorrowStr);
   const [roomChoice, setRoomChoice] = useState(ROOMS[0].id);
   const [guestCount, setGuestCount] = useState('2 Adults');
-  const [kidsCount, setKidsCount] = useState('0 Kids');
+  const [kidsCount, setKidsCount] = useState('0 Children');
+  const [dateError, setDateError] = useState<string | null>(null);
+  const [inquirySent, setInquirySent] = useState(false);
 
   // Hero carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,6 +34,75 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
     return () => clearInterval(interval);
   }, [isPaused]);
 
+  // When checkIn changes, adjust checkOut if needed
+  const handleCheckInChange = (newCheckIn: string) => {
+    setCheckIn(newCheckIn);
+    setDateError(null);
+    setInquirySent(false);
+
+    if (newCheckIn) {
+      const inDate = new Date(newCheckIn);
+      const outDate = new Date(checkOut);
+      if (isNaN(outDate.getTime()) || outDate <= inDate) {
+        const nextDay = new Date(inDate);
+        nextDay.setDate(nextDay.getDate() + 1);
+        setCheckOut(nextDay.toISOString().split('T')[0]);
+      }
+    }
+  };
+
+  const handleCheckOutChange = (newCheckOut: string) => {
+    setCheckOut(newCheckOut);
+    setDateError(null);
+    setInquirySent(false);
+  };
+
+  const handleQuickInquire = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // 1. Validate dates
+    if (!checkIn) {
+      setDateError('Please select a check-in date.');
+      return;
+    }
+    if (!checkOut) {
+      setDateError('Please select a check-out date.');
+      return;
+    }
+    if (checkIn < todayStr) {
+      setDateError('Check-in date cannot be in the past.');
+      return;
+    }
+    if (checkOut <= checkIn) {
+      setDateError('Check-out date must be after check-in date.');
+      return;
+    }
+
+    setDateError(null);
+
+    // 2. Find selected room
+    const selectedRoom = ROOMS.find((r) => r.id === roomChoice) || ROOMS[0];
+
+    // 3. Compose clean, professional WhatsApp availability enquiry
+    const message = `Hello Crown Tourist Home,
+I would like to check room availability and get your best rate:
+
+• Room Category: ${selectedRoom.name}
+• Check-in Date: ${checkIn} (Flexible)
+• Check-out Date: ${checkOut} (Flexible)
+• Adults: ${guestCount}
+• Children: ${kidsCount}
+
+Location: Beside Chalakudy River, Pariyaram.
+Please let me know if this room is available for these dates and confirm the tariff. Thank you!`;
+
+    const whatsappUrl = `https://wa.me/${HOTEL_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    setInquirySent(true);
+  };
+
   const handlePrevSlide = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrentSlide((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1));
@@ -40,21 +113,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
     setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
   };
 
-  const handleQuickInquire = (e: React.FormEvent) => {
-    e.preventDefault();
-    onOpenBooking(roomChoice, {
-      checkIn,
-      checkOut,
-      guests: guestCount,
-      kids: kidsCount,
-    });
-  };
-
   return (
     <section className="relative pt-6 pb-14 lg:pt-10 lg:pb-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Grid: Headline + Editorial Photography */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        {/* Main Grid: Headline + Property Photography */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Copy & Value Proposition */}
           <div className="lg:col-span-7 space-y-6">
             {/* Location & River Kicker */}
@@ -66,46 +129,46 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
               <span>Chalakudy - Anamala Road</span>
             </div>
 
-            {/* Editorial Display Headline - Clean, Punchy & Attractive */}
-            <h1 className="font-editorial text-3xl sm:text-4xl lg:text-[2.85rem] font-semibold text-[#1B1917] tracking-tight leading-[1.18]">
-              Clean, Honest Comfort on the Athirappilly Road
+            {/* Editorial Display Headline */}
+            <h1 className="font-editorial text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-[#1B1917] tracking-tight leading-[1.18] text-balance">
+              Clean, Comfortable & Affordable Stay on Athirappilly Road
             </h1>
 
-            {/* Concise, candid description - Brief and clear, no bracketed transit clutter */}
+            {/* Verified Supporting Copy */}
             <p className="text-base sm:text-lg text-[#5A534A] leading-relaxed max-w-2xl">
-              A clean, budget-friendly tourist home right beside the Chalakudy River. We focus on pure essentials.
+              A budget-friendly tourist home in Pariyaram, Kerala, beside the Chalakudy River. Enjoy clean rooms, essential comforts and convenient access to nearby attractions.
             </p>
 
-            {/* Brief, Uncluttered Trust Badges */}
+            {/* Verified Trust Badges */}
             <div className="pt-1 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-[#4E483F]">
               <span className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E]" />
+                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E] shrink-0" />
                 Clean Bed Sheets & Towels
               </span>
               <span aria-hidden="true" className="text-[#C5BCAD]">·</span>
               <span className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E]" />
+                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E] shrink-0" />
                 Attached Clean Washrooms
               </span>
               <span aria-hidden="true" className="text-[#C5BCAD]">·</span>
               <span className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E]" />
+                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E] shrink-0" />
                 Free Wi-Fi
               </span>
               <span aria-hidden="true" className="text-[#C5BCAD]">·</span>
               <span className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E]" />
+                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E] shrink-0" />
                 Flexible Check-In
               </span>
               <span aria-hidden="true" className="text-[#C5BCAD]">·</span>
               <span className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E]" />
+                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E] shrink-0" />
                 24/7 CCTV & Parking
               </span>
             </div>
 
-            {/* Action buttons - Mobile friendly stacking with min 44px tap targets */}
-            <div className="pt-3 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-4">
+            {/* Action buttons */}
+            <div className="pt-2 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
               <button
                 onClick={() => onOpenBooking()}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] active:scale-[0.98] rounded-xl shadow-md transition-all min-h-[44px]"
@@ -126,75 +189,51 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
                 rel="noreferrer"
                 className="inline-flex items-center justify-center sm:justify-start gap-1.5 py-1 text-xs font-medium text-[#7A5835] hover:underline"
               >
-                View on Google Maps →
+                <span>View on Google Maps</span>
+                <ExternalLink className="w-3 h-3 opacity-80" />
               </a>
             </div>
           </div>
 
-          {/* Right Column: Hero 2-Slide Interactive Property Carousel */}
+          {/* Right Column: Hero Property Showcase */}
           <div className="lg:col-span-5 relative">
             <div
               className="relative rounded-2xl overflow-hidden shadow-lg border border-[#E4DDD0] bg-[#1F1E1B] aspect-[4/3] lg:aspect-[5/4] group"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
-              {/* Slides */}
               {HERO_SLIDES.map((slide, idx) => (
                 <div
                   key={slide.id}
                   className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                    idx === currentSlide ? 'opacity-100 z-0' : 'opacity-0 pointer-events-none'
+                    idx === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                   }`}
                 >
                   <img
                     src={slide.url}
-                    alt={`${slide.title} - Crown Tourist Home in Pariyaram, Kerala`}
+                    alt={slide.title}
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover brightness-[1.02] contrast-[1.03]"
+                    className="w-full h-full object-cover"
                     loading={idx === 0 ? 'eager' : 'lazy'}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/20 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
                 </div>
               ))}
 
-              {/* Top Controls Bar */}
-              <div className="absolute top-3 inset-x-3 z-10 flex items-center justify-between gap-2">
-                {/* Property Label Badge */}
-                <div className="bg-[#1F1E1B]/85 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#7EE787] inline-block" />
-                  <span>Crown Tourist Home</span>
-                </div>
-
-                {/* Day / Dusk Slide Switcher Tabs */}
-                <div className="bg-black/60 backdrop-blur-md p-0.5 rounded-lg border border-white/10 flex items-center gap-0.5 shadow-sm">
-                  {HERO_SLIDES.map((slide, idx) => (
-                    <button
-                      key={slide.id}
-                      onClick={() => setCurrentSlide(idx)}
-                      className={`px-2.5 py-0.5 text-[11px] font-medium rounded-md transition-all ${
-                        idx === currentSlide
-                          ? 'bg-[#2D4A3E] text-white shadow-sm font-semibold'
-                          : 'text-white/75 hover:text-white hover:bg-white/10'
-                      }`}
-                    >
-                      {idx === 0 ? 'Day Entrance' : 'Dusk View'}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Left / Right Carousel Navigation Chevrons */}
+              {/* Prev / Next controls */}
               <button
+                type="button"
                 onClick={handlePrevSlide}
                 aria-label="Previous slide"
-                className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/45 hover:bg-black/75 text-white/80 hover:text-white flex items-center justify-center transition-all opacity-80 group-hover:opacity-100 focus:outline-none"
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/40 text-white hover:bg-black/70 backdrop-blur-xs transition-opacity opacity-80 sm:opacity-0 group-hover:opacity-100"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
+                type="button"
                 onClick={handleNextSlide}
                 aria-label="Next slide"
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/45 hover:bg-black/75 text-white/80 hover:text-white flex items-center justify-center transition-all opacity-80 group-hover:opacity-100 focus:outline-none"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/40 text-white hover:bg-black/70 backdrop-blur-xs transition-opacity opacity-80 sm:opacity-0 group-hover:opacity-100"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -234,8 +273,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
               </div>
             </div>
 
-            {/* Quick Distance Floating Badge - Mobile safe positioning */}
-            <div className="absolute -bottom-3 left-3 sm:-left-5 z-20 bg-white/95 backdrop-blur-md border border-[#E3DBD0] p-2.5 sm:p-3 rounded-xl shadow-lg max-w-[calc(100%-24px)] sm:max-w-[280px]">
+            {/* Quick Distance Floating Badge */}
+            <div className="absolute -bottom-3 left-3 sm:-left-4 z-20 bg-white/95 backdrop-blur-md border border-[#E3DBD0] p-2.5 sm:p-3 rounded-xl shadow-lg max-w-[calc(100%-24px)] sm:max-w-[280px]">
               <div className="flex items-center gap-1.5 text-[11px] text-[#2D4A3E] font-semibold">
                 <span className="w-2 h-2 rounded-full bg-[#2D4A3E] animate-pulse" />
                 <span>Beside Chalakudy River</span>
@@ -247,123 +286,185 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           </div>
         </div>
 
-        {/* Quick Booking Inquiry Bar (Full width below Hero split, mobile-first responsive) */}
-        <div className="mt-12 sm:mt-14 bg-white rounded-2xl border border-[#E5DFD4] shadow-sm p-4 sm:p-6">
-          <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        {/* Direct Booking Conversion Box: "Check Availability & Get Our Best Rate" */}
+        <div className="mt-12 sm:mt-14 bg-white rounded-2xl border-2 border-[#2D4A3E]/20 shadow-md p-4 sm:p-6 lg:p-7">
+          <div className="mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#F0EBE0] pb-4">
             <div>
-              <h2 className="text-sm font-semibold text-[#1F1E1B] uppercase tracking-wider">
-                Direct Booking Inquiry
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#7A5835]">
+                <Sparkles className="w-3.5 h-3.5 text-[#2D4A3E]" />
+                <span>Direct Manager Enquiry · Best Rate Guarantee</span>
+              </div>
+              <h2 className="font-editorial text-2xl sm:text-3xl font-semibold text-[#1F1E1B] mt-1">
+                Check Availability & Get Our Best Rate
               </h2>
-              <p className="text-xs text-[#70685E] mt-0.5">
-                No third-party app commissions. You speak directly with our manager via WhatsApp or Phone.
+              <p className="text-xs sm:text-sm text-[#61584C] mt-1">
+                Connect directly with our resident manager on WhatsApp. No extra OTA commissions or booking markups.
               </p>
             </div>
-            <div className="text-xs text-[#7A5835] font-medium flex items-center gap-1.5 shrink-0 self-start sm:self-auto bg-[#FAF6F0] sm:bg-transparent px-2.5 py-1 sm:p-0 rounded-lg">
-              <Clock className="w-3.5 h-3.5 shrink-0" />
-              <span>Standard Check-in 12 PM / Check-out 12 PM (Flexible)</span>
+            <div className="text-xs text-[#7A5835] font-medium flex items-center gap-1.5 shrink-0 bg-[#FAF6F0] px-3 py-2 rounded-xl border border-[#EFE8DC]">
+              <Clock className="w-3.5 h-3.5 text-[#2D4A3E] shrink-0" />
+              <span>Standard 12 PM (Flexible Check-in)</span>
             </div>
           </div>
 
-          <form onSubmit={handleQuickInquire} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 items-end">
-            {/* Check-In */}
-            <div>
-              <label className="block text-xs font-semibold text-[#574F44] mb-1">
-                Check-in Date
-              </label>
-              <div className="relative">
-                <input
-                  type="date"
-                  value={checkIn}
-                  onChange={(e) => setCheckIn(e.target.value)}
-                  className="w-full min-w-0 max-w-full text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-lg px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-1 focus:ring-[#2D4A3E]"
-                />
+          {/* Inline Validation Alert */}
+          {dateError && (
+            <div
+              role="alert"
+              className="mb-4 p-3 bg-[#FDF2F2] border border-[#F5C2C2] rounded-xl flex items-center gap-2 text-xs text-[#9B1C1C]"
+            >
+              <AlertCircle className="w-4 h-4 text-[#E02424] shrink-0" />
+              <span className="font-medium">{dateError}</span>
+            </div>
+          )}
+
+          {inquirySent && (
+            <div
+              role="status"
+              className="mb-4 p-3 bg-[#EAF2EC] border border-[#CFE2D3] rounded-xl flex items-center justify-between gap-2 text-xs text-[#20402E]"
+            >
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E] shrink-0" />
+                <span>Opening WhatsApp with your selected dates and room choice...</span>
               </div>
-            </div>
-
-            {/* Check-Out */}
-            <div>
-              <label className="block text-xs font-semibold text-[#574F44] mb-1">
-                Check-out Date
-              </label>
-              <div className="relative">
-                <input
-                  type="date"
-                  value={checkOut}
-                  onChange={(e) => setCheckOut(e.target.value)}
-                  className="w-full min-w-0 max-w-full text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-lg px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-1 focus:ring-[#2D4A3E]"
-                />
-              </div>
-            </div>
-
-            {/* Room Type */}
-            <div>
-              <label className="block text-xs font-semibold text-[#574F44] mb-1">
-                Room Category
-              </label>
-              <select
-                value={roomChoice}
-                onChange={(e) => setRoomChoice(e.target.value)}
-                className="w-full min-w-0 max-w-full text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-lg px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-1 focus:ring-[#2D4A3E]"
-              >
-                {ROOMS.map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Adults */}
-            <div>
-              <label className="block text-xs font-semibold text-[#574F44] mb-1">
-                Adults
-              </label>
-              <select
-                value={guestCount}
-                onChange={(e) => setGuestCount(e.target.value)}
-                className="w-full min-w-0 max-w-full text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-lg px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-1 focus:ring-[#2D4A3E]"
-              >
-                <option value="1 Adult">1 Adult</option>
-                <option value="2 Adults">2 Adults</option>
-                <option value="3 Adults">3 Adults</option>
-                <option value="4 Adults">4 Adults</option>
-                <option value="5+ Adults">5+ Adults</option>
-              </select>
-            </div>
-
-            {/* Kids */}
-            <div>
-              <label className="block text-xs font-semibold text-[#574F44] mb-1">
-                Kids (Optional)
-              </label>
-              <select
-                value={kidsCount}
-                onChange={(e) => setKidsCount(e.target.value)}
-                className="w-full min-w-0 max-w-full text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-lg px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-1 focus:ring-[#2D4A3E]"
-              >
-                <option value="0 Kids">0 Kids</option>
-                <option value="1 Kid">1 Kid</option>
-                <option value="2 Kids">2 Kids</option>
-                <option value="3+ Kids">3+ Kids</option>
-              </select>
-            </div>
-
-            {/* Submit */}
-            <div>
               <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-3 text-xs font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] active:scale-[0.98] rounded-lg shadow-sm transition-all min-h-[42px]"
+                type="button"
+                onClick={() => setInquirySent(false)}
+                className="text-[11px] underline text-[#2D4A3E] font-medium"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-[#7EE787] shrink-0" />
-                <span>Inquire Availability</span>
+                Dismiss
               </button>
+            </div>
+          )}
+
+          <form onSubmit={handleQuickInquire} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 items-end">
+              {/* Check-In */}
+              <div>
+                <label htmlFor="hero-checkin" className="block text-xs font-semibold text-[#4F463B] mb-1">
+                  Check-in Date
+                </label>
+                <div className="relative">
+                  <input
+                    id="hero-checkin"
+                    type="date"
+                    min={todayStr}
+                    value={checkIn}
+                    onChange={(e) => handleCheckInChange(e.target.value)}
+                    className="w-full min-w-0 text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-xl px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Check-Out */}
+              <div>
+                <label htmlFor="hero-checkout" className="block text-xs font-semibold text-[#4F463B] mb-1">
+                  Check-out Date
+                </label>
+                <div className="relative">
+                  <input
+                    id="hero-checkout"
+                    type="date"
+                    min={checkIn || todayStr}
+                    value={checkOut}
+                    onChange={(e) => handleCheckOutChange(e.target.value)}
+                    className="w-full min-w-0 text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-xl px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Room Category */}
+              <div>
+                <label htmlFor="hero-room" className="block text-xs font-semibold text-[#4F463B] mb-1">
+                  Room Category
+                </label>
+                <select
+                  id="hero-room"
+                  value={roomChoice}
+                  onChange={(e) => setRoomChoice(e.target.value)}
+                  className="w-full min-w-0 text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-xl px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all"
+                >
+                  {ROOMS.map((r) => (
+                    <option key={r.id} value={r.id}>
+                      {r.name} ({r.priceEstimate})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Adults */}
+              <div>
+                <label htmlFor="hero-adults" className="block text-xs font-semibold text-[#4F463B] mb-1">
+                  Number of Adults
+                </label>
+                <select
+                  id="hero-adults"
+                  value={guestCount}
+                  onChange={(e) => setGuestCount(e.target.value)}
+                  className="w-full min-w-0 text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-xl px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all"
+                >
+                  <option value="1 Adult">1 Adult</option>
+                  <option value="2 Adults">2 Adults</option>
+                  <option value="3 Adults">3 Adults</option>
+                  <option value="4 Adults">4 Adults</option>
+                  <option value="5+ Adults">5+ Adults</option>
+                </select>
+              </div>
+
+              {/* Children */}
+              <div>
+                <label htmlFor="hero-children" className="block text-xs font-semibold text-[#4F463B] mb-1">
+                  Number of Children
+                </label>
+                <select
+                  id="hero-children"
+                  value={kidsCount}
+                  onChange={(e) => setKidsCount(e.target.value)}
+                  className="w-full min-w-0 text-xs font-medium bg-[#FAF8F5] border border-[#DDD5C7] rounded-xl px-3 py-2.5 text-[#242424] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all"
+                >
+                  <option value="0 Children">0 Children</option>
+                  <option value="1 Child">1 Child</option>
+                  <option value="2 Children">2 Children</option>
+                  <option value="3+ Children">3+ Children</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Buttons & Clarification Bar */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+              <div className="text-[11px] text-[#696154] leading-relaxed max-w-xl">
+                <span>
+                  <strong>Availability Note:</strong> Clicking below sends an availability enquiry to our manager on WhatsApp. Rooms are confirmed directly upon manager verification.
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0">
+                <a
+                  href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`}
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs font-medium text-[#373129] bg-[#EFE9DD] hover:bg-[#E5DDCF] rounded-xl transition-colors min-h-[44px]"
+                  title={`Call Manager (${HOTEL_INFO.phoneDisplay})`}
+                >
+                  <Phone className="w-3.5 h-3.5 text-[#7A5835]" />
+                  <span>Call Manager: {HOTEL_INFO.phoneDisplay}</span>
+                </a>
+
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] active:scale-[0.98] rounded-xl shadow-md transition-all min-h-[44px]"
+                >
+                  <MessageCircle className="w-4 h-4 text-[#7EE787] shrink-0" />
+                  <span>Check Availability on WhatsApp</span>
+                </button>
+              </div>
             </div>
           </form>
 
-          {/* Transparent Payment Notice */}
-          <div className="mt-3.5 pt-3 border-t border-[#F0EBE1] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-[#786F63]">
+          {/* Payment & Transparent Policy Footnote */}
+          <div className="mt-4 pt-3 border-t border-[#F0EBE1] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-[#786F63]">
             <span>Payment on arrival: <strong>Google Pay (GPay UPI)</strong> or <strong>Cash</strong>.</span>
-            <span>Manager Call: <strong>{HOTEL_INFO.phoneDisplay}</strong> · WhatsApp Booking: <strong>{HOTEL_INFO.whatsappDisplay}</strong></span>
+            <span>Manager: <strong>{HOTEL_INFO.phoneDisplay}</strong> · WhatsApp: <strong>{HOTEL_INFO.whatsappDisplay}</strong></span>
           </div>
         </div>
       </div>

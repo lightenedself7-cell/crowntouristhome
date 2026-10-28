@@ -142,7 +142,7 @@ export const RoomsSection: React.FC<RoomsSectionProps> = ({ onOpenBooking }) => 
               Transparent Tourist Home Policy:
             </p>
             <p>
-              Crown Tourist Home is focused on clean, private sleeping quarters with attached washrooms, free Wi-Fi, 1 table & 2 chairs in every room, and ₹200 extra mattress option. We do not provide food inside, but famous Kerala eateries (including Vasuettans Kada and bakeries) are located within a short walking distance.
+              Crown Tourist Home is focused on clean, private sleeping quarters with attached washrooms, free Wi-Fi, 1 table & 2 chairs in every room, and ₹200 extra mattress option. We do not provide food inside, but famous Kerala eateries (including Vasuvettante Kada and bakeries) are located within a short walking distance.
             </p>
           </div>
           <div className="shrink-0 flex items-center gap-3 text-xs font-medium text-[#7A5835]">
