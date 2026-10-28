@@ -52,6 +52,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                 </a>
               </li>
               <li>
+                <a href="#facilities" className="hover:text-white transition-colors">
+                  Facilities & Amenities
+                </a>
+              </li>
+              <li>
+                <a href="#housekeeping" className="hover:text-white transition-colors">
+                  Housekeeping & Cleanliness
+                </a>
+              </li>
+              <li>
                 <a href="#attractions" className="hover:text-white transition-colors">
                   Athirappilly Sightseeing Guide
                 </a>
@@ -67,8 +77,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                 </a>
               </li>
               <li>
-                <a href="#policies" className="hover:text-white transition-colors">
-                  House Policy & Hygiene Standard
+                <a href="#faq" className="hover:text-white transition-colors">
+                  Frequently Asked Questions
                 </a>
               </li>
             </ul>

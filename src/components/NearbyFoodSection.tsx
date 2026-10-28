@@ -19,7 +19,7 @@ export const NearbyFoodSection: React.FC = () => {
   const vasuettan = NEARBY_FOOD_INFO.vasuettansRestaurant;
 
   return (
-    <section id="dining" className="py-16 lg:py-24 bg-[#FAF8F5]">
+    <section id="dining" className="py-16 lg:py-24 bg-[#FAF8F5] scroll-mt-16 sm:scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="max-w-3xl">

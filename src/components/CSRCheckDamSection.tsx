@@ -4,9 +4,9 @@ import { NEARBY_ATTRACTIONS } from '../data/hotelData';
 
 export const CSRCheckDamSection: React.FC = () => {
   return (
-    <section id="attractions" className="py-16 lg:py-24 bg-[#F5F1E8] border-t border-[#E6E0D4] scroll-mt-14">
+    <section id="attractions" className="py-16 lg:py-24 bg-[#F5F1E8] border-t border-[#E6E0D4] scroll-mt-16 sm:scroll-mt-20">
       {/* Anchor for both #check-dam and #attractions */}
-      <span id="check-dam" className="scroll-mt-14" />
+      <span id="check-dam" className="scroll-mt-16 sm:scroll-mt-20" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Section Header */}

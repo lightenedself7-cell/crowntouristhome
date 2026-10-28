@@ -186,7 +186,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '1 min walk',
     description:
       'The beautiful Chalakudy River flows right beside Crown Tourist Home. Guests can enjoy soothing water views, refreshing river breezes, and a peaceful natural setting just steps from the hotel rooms.',
-    image: '/src/assets/images/chalakudy_river_view_1793209833814.jpg',
+    image: '/assets/images/chalakudy_river.jpg',
     travelTip: 'Perfect for morning walks, quiet sunset views, and soaking in the tranquil river ambiance right next door.',
     highlight: 'Flows right next to hotel · Scenic river view',
   },
@@ -198,7 +198,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '3 min drive / 15 min walk',
     description:
       'A scenic river check-dam and weir across the Chalakudy River in Pariyaram (Kombanpara Thadayana). Fresh river water flows over the smooth weir edge into cascading ripples. A peaceful 4.5-star rated local spot to unwind, enjoy cool river breezes, and relax in the evening.',
-    image: '/src/assets/images/csr_check_dam_1793209835609.jpg',
+    image: '/assets/images/csr_check_dam.jpg',
     travelTip: '4.5 ★ on Google (408+ reviews). Open 24 hours; late afternoon and golden hour are ideal for tranquil river relaxation.',
     highlight: '4.5 ★ rating (408 reviews) · Scenic river cascades',
   },
@@ -210,7 +210,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '25 min drive',
     description:
       'Kerala’s most celebrated natural landmark, known as the "Niagara of India". An 80-foot majestic cascade framed by lush Western Ghats rainforest.',
-    image: '/src/assets/images/crown_athirappilly_falls_1792966714993.jpg',
+    image: '/assets/images/athirappilly_falls.jpg',
     travelTip: 'Visit early morning (8:30 AM to 11:00 AM) or after 3:30 PM for lesser crowds and cooler forest breezes.',
     highlight: 'Iconic 80-foot waterfall cascade',
   },
@@ -222,7 +222,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '12 min drive',
     description:
       'A picturesque check-dam with an iconic pedestrian suspension hanging bridge across the Chalakudy River, accompanied by a vibrant butterfly garden and river park.',
-    image: '/src/assets/images/crown_thumboormuzhi_hanging_bridge_1792966715603.jpg',
+    image: '/assets/images/thumboormuzhi.jpg',
     travelTip: 'Walk across the bridge to reach Ezhattumugham Nature Village on the opposite riverbank.',
     highlight: 'Scenic suspension bridge & river views',
   },
@@ -234,7 +234,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '5 min drive',
     description:
       'A sprawling family water and amusement park located right along Athirappilly Road with thrilling water rides, wave pool, and rain dance.',
-    image: '/src/assets/images/dream_world_clean_park_1793011864360.jpg',
+    image: '/assets/images/dream_world.jpg',
     travelTip: 'Ideal morning activity before checking into Crown Tourist Home for a relaxing evening.',
     highlight: 'Right up the road from the hotel',
   },
@@ -246,7 +246,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '10 min drive',
     description:
       'Another top amusement hub featuring high-thrill roller rides, water slides, and the sub-zero indoor Snow Storm experience.',
-    image: '/src/assets/images/silver_storm_water_park_1792968249034.jpg',
+    image: '/assets/images/silver_storm.jpg',
     travelTip: 'Great choice for kids and groups looking for full-day amusement park fun.',
     highlight: 'Water rides and sub-zero snow dome',
   },
@@ -258,7 +258,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '32 min drive',
     description:
       'Further up into the pristine Sholayar forest corridor past Athirappilly, offering gushing roadside falls at Charpa and the rapid cascade of Vazhachal.',
-    image: '/src/assets/images/vazhachal_charpa_falls_1792968363728.jpg',
+    image: '/assets/images/vazhachal_falls.jpg',
     travelTip: 'Requires Athirappilly check-post forest entry pass (valid for both Athirappilly and Vazhachal).',
     highlight: 'Deep rainforest & natural rapids',
   },
@@ -321,7 +321,7 @@ export const DINING_HIGHLIGHTS: DiningSpot[] = [
       },
     ],
     isWalkable: false,
-    image: '/src/assets/images/crown_kerala_meal_vasuettan_1792966716121.jpg',
+    image: '/assets/images/crown_kerala_meal_vasuettan_1792966716121.jpg',
     mapsUrl: 'https://maps.app.goo.gl/ZjusQeurZryUaqcS9',
   },
   {
@@ -477,7 +477,7 @@ export const NEARBY_FOOD_INFO = {
     mapsUrl: 'https://maps.app.goo.gl/ZjusQeurZryUaqcS9',
     description:
       'With an outstanding 4.5 rating from over 6,616 Google reviews, Vasuvettante Kada is a celebrated gastronomic icon on the Chalakudy - Athirappilly road. Highly sought-after by travelers and locals alike for serving piping hot Kerala noon meals on fresh banana leaves alongside tender spicy beef fry, rich prawns paal curry, crispy fish fry, and country duck roast at very budget-friendly rates.',
-    image: '/src/assets/images/crown_kerala_meal_vasuettan_1792966716121.jpg',
+    image: '/assets/images/crown_kerala_meal_vasuettan_1792966716121.jpg',
     specialties: [
       'Nadan Beef Fry slow-roasted with coconut chips',
       'Chemmeen Paal Curry (prawns in coconut milk)',

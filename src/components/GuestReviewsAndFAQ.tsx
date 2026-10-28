@@ -14,7 +14,7 @@ export const GuestReviewsAndFAQ: React.FC<FAQSectionProps> = ({ onOpenBooking })
   };
 
   return (
-    <section id="faq" className="py-16 lg:py-24 bg-[#FAF8F5] border-t border-[#E6E0D4]">
+    <section id="faq" className="py-16 lg:py-24 bg-[#FAF8F5] border-t border-[#E6E0D4] scroll-mt-16 sm:scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">

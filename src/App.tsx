@@ -7,7 +7,8 @@ import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { RoomsSection } from './components/RoomsSection';
-import { HousePolicySection } from './components/HousePolicySection';
+import { FacilitiesSection } from './components/FacilitiesSection';
+import { HousekeepingSection } from './components/HousekeepingSection';
 import { CSRCheckDamSection } from './components/CSRCheckDamSection';
 import { NearbyFoodSection } from './components/NearbyFoodSection';
 import { LocationDirections } from './components/LocationDirections';
@@ -50,8 +51,11 @@ export default function App() {
         {/* 3. Room categories and pricing (Non-AC, Standard AC, Spacious AC Triple at ₹1,600) */}
         <RoomsSection onOpenBooking={handleOpenBooking} />
 
-        {/* 4 & 5. Verified Facilities & Amenities + Honest Cleanliness and Housekeeping */}
-        <HousePolicySection />
+        {/* 4. Verified Facilities & Amenities */}
+        <FacilitiesSection />
+
+        {/* 5. Honest Cleanliness & Housekeeping Standards */}
+        <HousekeepingSection />
 
         {/* 6. CSR Check Dam (Charakkudy Check Dam) Attraction with official Google Maps link */}
         <CSRCheckDamSection />
