@@ -8,7 +8,6 @@ import {
   MessageCircle,
   Phone,
   Sparkles,
-  Info,
 } from 'lucide-react';
 import { HOTEL_INFO } from '../data/hotelData';
 
@@ -177,7 +176,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onOpenBooking }) => 
               Explore Our Rooms &amp; Property
             </h2>
             <p className="mt-1.5 text-xs sm:text-sm text-[#5C5449] leading-relaxed">
-              Browse authentic photographs of Crown Tourist Home—from our daytime entrance and evening facade to our air-conditioned family rooms and standard budget stays.
+              Explore photographs of Crown Tourist Home—from our daytime entrance and evening facade to our air-conditioned family rooms and standard budget stays.
             </p>
           </div>
 
@@ -389,12 +388,12 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onOpenBooking }) => 
           </div>
         </div>
 
-        {/* Trust & Transparency Note */}
+        {/* Contact & Enquiry Note */}
         <div className="p-4 rounded-xl bg-white border border-[#E3DBD0] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#5C5449]">
-          <div className="flex items-start sm:items-center gap-2">
-            <Info className="w-4 h-4 text-[#2D4A3E] shrink-0 mt-0.5 sm:mt-0" />
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#2D4A3E]" />
             <span>
-              <strong>100% Authentic Photos:</strong> All images represent actual guest rooms and on-site facilities at Crown Tourist Home in Pariyaram beside Chalakudy River.
+              Have questions about room availability or rates? Reach out to our on-site team directly.
             </span>
           </div>
 
