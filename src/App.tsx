@@ -8,6 +8,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { RoomsSection } from './components/RoomsSection';
 import { FacilitiesSection } from './components/FacilitiesSection';
+import { PhotoGallery } from './components/PhotoGallery';
 import { HousekeepingSection } from './components/HousekeepingSection';
 import { NearbyExplorer } from './components/NearbyExplorer';
 import { NearbyFoodSection } from './components/NearbyFoodSection';
@@ -53,6 +54,9 @@ export default function App() {
 
         {/* 4. Verified Facilities & Amenities */}
         <FacilitiesSection />
+
+        {/* 4b. Hotel Photo Gallery: Take a Look Around */}
+        <PhotoGallery onOpenBooking={handleOpenBooking} />
 
         {/* 5. Honest Cleanliness & Housekeeping Standards */}
         <HousekeepingSection />
