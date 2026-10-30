@@ -191,7 +191,7 @@ Please confirm room availability and the best tariff for these dates. Thank you!
                   <option value="1 Double Bed (₹900–₹1,000 / night)">1 Double Bed (₹900–₹1,000 / night) - 2 Persons</option>
                 </select>
                 <span className="text-[11px] text-[#7A5835] mt-1 block">
-                  Includes 1 table, 2 chairs, free Wi-Fi, clean bed sheets & towels, attached private clean bath (No TV).
+                  Includes free Wi-Fi, clean bed sheets &amp; towels, attached private clean bath (No TV).
                 </span>
               </div>
             )}
@@ -329,10 +329,11 @@ Please confirm room availability and the best tariff for these dates. Thank you!
         <div className="px-4 sm:px-6 py-3.5 sm:py-4 bg-[#F2EDE4] border-t border-[#E3DBD0] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
           <a
             href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 text-xs font-semibold text-[#383127] bg-white border border-[#DDD5C7] hover:bg-[#FAF8F5] rounded-xl transition-colors min-h-[44px]"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 text-xs font-semibold text-[#0E4D40] bg-white border border-[#DDD5C7] hover:bg-[#FAF8F5] rounded-xl transition-colors min-h-[44px]"
+            title="Call Reception"
           >
-            <Phone className="w-3.5 h-3.5 text-[#7A5835] shrink-0" />
-            <span>Call Manager: {HOTEL_INFO.phoneDisplay}</span>
+            <Phone className="w-3.5 h-3.5 text-[#0E4D40] shrink-0" />
+            <span>Call Reception</span>
           </a>
 
           <a
@@ -340,10 +341,10 @@ Please confirm room availability and the best tariff for these dates. Thank you!
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleWhatsAppClick}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] active:scale-[0.98] rounded-xl shadow-md transition-all min-h-[44px]"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold text-white bg-[#22c55e] hover:bg-[#16a34a] active:scale-[0.98] rounded-xl shadow-md transition-all min-h-[44px]"
           >
-            <MessageCircle className="w-4 h-4 text-[#7EE787] shrink-0" />
-            <span>Check Availability on WhatsApp</span>
+            <MessageCircle className="w-4 h-4 text-white fill-white shrink-0" />
+            <span>Book via WhatsApp</span>
           </a>
         </div>
       </div>

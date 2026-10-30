@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, Phone, MessageCircle, Navigation, Shield } from 'lucide-react';
 import { HOTEL_INFO } from '../data/hotelData';
+import { CrownIcon } from './Navbar';
 
 interface FooterProps {
   onOpenBooking: () => void;
@@ -13,7 +14,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#36322C]">
           {/* Brand & Overview (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <a href="/index.html" className="inline-block hover:opacity-90 transition-opacity">
+            <a href="/index.html" className="inline-flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+              <CrownIcon className="w-6 h-6 text-[#C58A3C] shrink-0" />
               <h3 className="font-editorial text-2xl text-white font-semibold tracking-wide">
                 Crown Tourist Home
               </h3>
@@ -24,18 +26,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
             <div className="pt-2 flex flex-wrap items-center gap-2.5">
               <button
                 onClick={onOpenBooking}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 text-xs font-semibold bg-[#2D4A3E] text-white hover:bg-[#385C4D] rounded-lg transition-colors min-h-[40px]"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 text-xs font-semibold bg-[#22c55e] text-white hover:bg-[#16a34a] rounded-xl transition-colors min-h-[40px] cursor-pointer"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-[#7EE787]" />
-                <span>WhatsApp Booking</span>
+                <MessageCircle className="w-3.5 h-3.5 text-white fill-white" />
+                <span>Book via WhatsApp</span>
               </button>
               <a
                 href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 text-xs font-medium bg-[#2C2925] text-white hover:bg-[#3C3833] rounded-lg transition-colors min-h-[40px]"
-                title={`Call Manager (${HOTEL_INFO.phoneDisplay})`}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 text-xs font-medium bg-[#2C2925] text-white hover:bg-[#3C3833] rounded-xl transition-colors min-h-[40px]"
+                title="Call Reception"
               >
                 <Phone className="w-3.5 h-3.5 text-[#D1B48C]" />
-                <span>Call Manager</span>
+                <span>Call Reception</span>
               </a>
             </div>
           </div>
@@ -54,11 +56,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
               <li>
                 <a href="#facilities" className="hover:text-white transition-colors">
                   Facilities & Amenities
-                </a>
-              </li>
-              <li>
-                <a href="#housekeeping" className="hover:text-white transition-colors">
-                  Housekeeping & Cleanliness
                 </a>
               </li>
               <li>
@@ -99,10 +96,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
               </p>
               <p className="flex items-center gap-2 pt-1">
                 <Phone className="w-4 h-4 text-[#D1B48C] shrink-0" />
-                <span>Call Manager: <a href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`} className="text-white hover:underline font-medium">{HOTEL_INFO.phoneDisplay}</a></span>
+                <span>Call Reception: <a href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`} className="text-white hover:underline font-medium">{HOTEL_INFO.phoneDisplay}</a></span>
               </p>
               <p className="flex items-center gap-2">
-                <MessageCircle className="w-4 h-4 text-[#7EE787] shrink-0" />
+                <MessageCircle className="w-4 h-4 text-[#22c55e] shrink-0" />
                 <span>Book via WhatsApp: <a href={`https://wa.me/${HOTEL_INFO.whatsappNumber}`} target="_blank" rel="noreferrer" className="text-white hover:underline font-medium">{HOTEL_INFO.whatsappDisplay}</a></span>
               </p>
               <p className="flex items-center gap-2">

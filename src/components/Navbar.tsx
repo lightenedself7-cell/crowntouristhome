@@ -2,6 +2,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Phone, MessageCircle, Menu, X, ChevronDown } from 'lucide-react';
 import { HOTEL_INFO } from '../data/hotelData';
 
+// Golden Crown SVG symbol matching the exact brand icon in reference screenshot (image_2db99aca.png)
+export const CrownIcon: React.FC<{ className?: string }> = ({ className = 'w-6 h-6 text-[#C58A3C]' }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
+    <path d="M2.5 5.5l1.6 9.5h15.8l1.6-9.5-4.8 5-4.7-7.5-4.7 7.5-4.8-5z" />
+    <rect x="4.2" y="17.2" width="15.6" height="2.4" rx="0.4" />
+  </svg>
+);
+
 interface NavbarProps {
   onOpenBooking: (roomType?: string) => void;
 }
@@ -38,12 +51,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
     <header className="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8E2D8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-3 sm:gap-4 lg:gap-6 h-16 sm:h-20">
-          {/* Zone 1: Brand wordmark on the left */}
+          {/* Zone 1: Crown icon + Brand Name + Location Subtitle */}
           <a
             href="/index.html"
-            className="font-editorial text-lg xs:text-xl sm:text-2xl font-bold tracking-tight text-[#1F1E1B] hover:text-[#7A5835] transition-colors whitespace-nowrap shrink-0"
+            className="flex items-center gap-2.5 sm:gap-3 group shrink-0 py-1"
           >
-            Crown Tourist Home
+            <CrownIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#C58A3C] shrink-0 transition-transform group-hover:scale-105" />
+            <div className="flex flex-col">
+              <span className="font-editorial text-lg xs:text-xl sm:text-2xl font-bold tracking-tight text-[#0E4D40] group-hover:text-[#0A382F] transition-colors whitespace-nowrap leading-tight">
+                Crown Tourist Home
+              </span>
+              <span className="text-[11px] sm:text-xs font-semibold text-[#C58A3C] tracking-wide leading-none mt-0.5">
+                Pariyaram, Athirappilly Road
+              </span>
+            </div>
           </a>
 
           {/* Zone 2: Desktop Nav links (Visible on desktop: Rooms, Facilities, Attractions, Location + More dropdown) */}
@@ -76,7 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
               Location
             </a>
 
-            {/* "More" Dropdown containing Housekeeping, Nearby Dining, FAQs */}
+            {/* "More" Dropdown containing Nearby Dining, FAQs */}
             <div className="relative" ref={moreDropdownRef}>
               <button
                 type="button"
@@ -99,14 +120,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
                   role="menu"
                 >
                   <a
-                    href="#housekeeping"
-                    role="menuitem"
-                    onClick={() => setMoreDropdownOpen(false)}
-                    className="block px-4 py-2.5 hover:bg-[#F0ECE1] hover:text-[#1F1E1B] transition-colors"
-                  >
-                    Housekeeping
-                  </a>
-                  <a
                     href="#dining"
                     role="menuitem"
                     onClick={() => setMoreDropdownOpen(false)}
@@ -127,36 +140,35 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             </div>
           </nav>
 
-          {/* Zone 3: Right Action Buttons & Hamburger Menu */}
+          {/* Zone 3: Right Action Buttons (Call Reception + WhatsApp) */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Call Manager (Always accessible on tablet and desktop, tel link) */}
+            {/* Call Reception (Outline button with phone icon) */}
             <a
               href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-[#4A4339] bg-[#EFE9DD] hover:bg-[#E5DDCF] rounded-lg transition-colors whitespace-nowrap shrink-0"
-              title={`Call Manager (${HOTEL_INFO.phoneDisplay})`}
+              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-medium text-[#2E2820] bg-white hover:bg-[#F7F5F0] border border-[#D5CDC1] rounded-xl shadow-xs transition-colors whitespace-nowrap shrink-0"
+              title={`Call Reception (${HOTEL_INFO.phoneDisplay})`}
             >
               <Phone className="w-3.5 h-3.5 text-[#7A5835]" />
-              <span className="hidden xl:inline">Call Manager: {HOTEL_INFO.phoneDisplay}</span>
-              <span className="xl:hidden">Call Manager</span>
+              <span>Call Reception</span>
             </a>
 
-            {/* Enquire via WhatsApp Button (Desktop + Tablet full, Mobile compact) */}
+            {/* WhatsApp Button (Green rounded button) */}
             <button
               onClick={() => onOpenBooking()}
-              className="hidden sm:inline-flex items-center gap-1.5 xl:gap-2 px-3 xl:px-4 py-2 text-xs font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] active:scale-[0.98] rounded-lg shadow-sm transition-all whitespace-nowrap shrink-0 cursor-pointer"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-[#25D366] hover:bg-[#20BD5A] active:scale-[0.98] rounded-xl shadow-sm transition-all whitespace-nowrap shrink-0 cursor-pointer"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-[#7EE787]" />
-              <span>Enquire via WhatsApp</span>
+              <MessageCircle className="w-4 h-4 text-white fill-white" />
+              <span>WhatsApp</span>
             </button>
 
             {/* Mobile-only compact WhatsApp CTA button */}
             <button
               onClick={() => onOpenBooking()}
-              className="sm:hidden inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] active:scale-[0.98] rounded-lg shadow-sm transition-all shrink-0 min-h-[36px]"
+              className="sm:hidden inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold text-white bg-[#25D366] hover:bg-[#20BD5A] active:scale-[0.98] rounded-xl shadow-sm transition-all shrink-0 min-h-[36px]"
               aria-label="Enquire via WhatsApp"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-[#7EE787]" />
-              <span>Enquire</span>
+              <MessageCircle className="w-3.5 h-3.5 text-white fill-white" />
+              <span>WhatsApp</span>
             </button>
 
             {/* Hamburger toggle button (Visible on mobile and smaller tablet screens: lg:hidden) */}
@@ -218,16 +230,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
               Location
             </a>
 
-            {/* 5. Housekeeping */}
-            <a
-              href="#housekeeping"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3.5 py-2.5 rounded-lg hover:bg-[#F0ECE1] transition-colors min-h-[44px] flex items-center"
-            >
-              Housekeeping
-            </a>
-
-            {/* 6. Nearby Dining */}
+            {/* 5. Nearby Dining */}
             <a
               href="#dining"
               onClick={() => setMobileMenuOpen(false)}
@@ -253,17 +256,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full sm:flex-1 flex items-center justify-center gap-2 py-3 px-4 text-xs font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] rounded-xl shadow-sm transition-colors min-h-[44px] cursor-pointer"
+              className="w-full sm:flex-1 flex items-center justify-center gap-2 py-3 px-4 text-xs font-semibold text-white bg-[#25D366] hover:bg-[#20BD5A] rounded-xl shadow-sm transition-colors min-h-[44px] cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4 text-[#7EE787]" />
-              <span>Enquire via WhatsApp</span>
+              <MessageCircle className="w-4 h-4 text-white fill-white" />
+              <span>WhatsApp</span>
             </button>
             <a
               href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`}
-              className="w-full sm:flex-1 flex items-center justify-center gap-2 py-3 px-4 text-xs font-semibold bg-[#EFE9DD] hover:bg-[#E5DDCF] text-[#3F3930] rounded-xl transition-colors min-h-[44px]"
+              className="w-full sm:flex-1 flex items-center justify-center gap-2 py-3 px-4 text-xs font-semibold bg-white hover:bg-[#F2ECE1] text-[#3F3930] border border-[#D5CDC1] rounded-xl transition-colors min-h-[44px]"
             >
-              <Phone className="w-3.5 h-3.5 text-[#7A5835]" />
-              <span>Call: {HOTEL_INFO.phoneDisplay}</span>
+              <Phone className="w-3.5 h-3.5 text-[#0E4D40]" />
+              <span>Call Reception</span>
             </a>
           </div>
         </div>

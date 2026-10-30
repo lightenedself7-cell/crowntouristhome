@@ -72,16 +72,16 @@ export const GuestReviewsAndFAQ: React.FC<FAQSectionProps> = ({ onOpenBooking })
                 Have a question or looking to confirm today?
               </h3>
               <p className="text-xs sm:text-sm text-white/85 mt-1 max-w-xl">
-                Contact our manager directly via WhatsApp or telephone for immediate room availability and tariff confirmation.
+                Contact reception directly via WhatsApp or telephone for immediate room availability and tariff confirmation.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
               <button
                 onClick={onOpenBooking}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold bg-white text-[#2D4A3E] hover:bg-[#FAF8F5] rounded-xl shadow-sm transition-colors min-h-[44px]"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold bg-[#22c55e] hover:bg-[#16a34a] text-white rounded-xl shadow-sm transition-colors min-h-[44px] cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-[#2D4A3E]" />
-                <span>Message on WhatsApp</span>
+                <MessageCircle className="w-4 h-4 text-white fill-white" />
+                <span>Book via WhatsApp</span>
               </button>
               <a
                 href={HOTEL_INFO.googleMapsUrl}

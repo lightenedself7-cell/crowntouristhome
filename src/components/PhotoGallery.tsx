@@ -49,7 +49,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: 'Air Conditioned · TV',
     tag: 'AC + TV · ₹1,500–₹1,600 / night',
     description:
-      'Generously sized air-conditioned family room featuring wooden beds, fresh linens, dining table & chairs, wall-mounted television, and attached clean washroom.',
+      'Generously sized air-conditioned family room featuring wooden beds, fresh linens, wall-mounted television, and attached clean washroom.',
     url: '/assets/aistudio/Bright_Budget_Hotel_Room_Interior_b005eefe.png',
     alt: 'Spacious Triple AC Room with wooden beds, blue-striped linen, desk, TV, and attached clean washroom',
     roomId: 'spacious-family-triple-ac',
@@ -60,7 +60,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: 'Air Conditioned · TV',
     tag: 'AC + TV · ₹1,300 / night',
     description:
-      'Comfortable air-conditioned double room with quality foam mattress, dedicated work/dining desk, cable television, and private attached washroom with 24/7 water supply.',
+      'Comfortable air-conditioned double room with quality foam mattress, dedicated work desk, cable television, and private attached washroom with 24/7 water supply.',
     url: '/assets/aistudio/Tidy_Bedroom_with_En-Suite_Bathroom_c60cb533.png',
     alt: 'Deluxe AC Double Room with wooden double bed, TV, work desk, and open door to private en-suite bathroom',
     roomId: 'deluxe-double-ac',
@@ -71,7 +71,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: 'Budget Non-AC (No TV)',
     tag: 'Ceiling Fan · ₹900–₹1,000 / night',
     description:
-      'Affordable, well-ventilated budget room with comfortable bed, high-speed ceiling fan, table with seating, and private attached washroom. Ideal for budget-conscious travellers.',
+      'Affordable, well-ventilated budget room with comfortable bed, high-speed ceiling fan, and private attached washroom. Ideal for budget-conscious travellers.',
     url: '/assets/aistudio/Compact_Blue-Striped_Guest_Room_c4f76418.png',
     alt: 'Standard Non-AC room with double bed, blue striped linen, ceiling fan, and private attached washroom',
     roomId: 'standard-double-non-ac',
@@ -401,18 +401,19 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onOpenBooking }) => 
             <a
               href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`}
               className="inline-flex items-center gap-1 font-semibold text-[#7A5835] hover:text-[#5A4026] hover:underline"
+              title="Call Reception"
             >
               <Phone className="w-3.5 h-3.5 text-[#7A5835]" />
-              <span>Call Manager</span>
+              <span>Call Reception</span>
             </a>
             <span className="text-[#D3CBC0]">·</span>
             <button
               type="button"
               onClick={() => onOpenBooking && onOpenBooking()}
-              className="inline-flex items-center gap-1 font-semibold text-[#2D4A3E] hover:underline cursor-pointer"
+              className="inline-flex items-center gap-1 font-semibold text-[#22c55e] hover:underline cursor-pointer"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-[#2D4A3E]" />
-              <span>Enquire on WhatsApp</span>
+              <MessageCircle className="w-3.5 h-3.5 text-[#22c55e]" />
+              <span>Book via WhatsApp</span>
             </button>
           </div>
         </div>
@@ -500,8 +501,9 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onOpenBooking }) => 
                 <a
                   href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`}
                   className="px-3.5 py-2 rounded-xl text-xs font-semibold text-white bg-white/15 hover:bg-white/25 transition-colors"
+                  title="Call Reception"
                 >
-                  Call Manager
+                  Call Reception
                 </a>
                 {currentItem.roomId ? (
                   <button
@@ -510,10 +512,10 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onOpenBooking }) => 
                       setIsLightboxOpen(false);
                       onOpenBooking && onOpenBooking(currentItem.roomId);
                     }}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] transition-colors shadow-sm cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-[#22c55e] hover:bg-[#16a34a] transition-colors shadow-sm cursor-pointer"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 text-[#86EFAC]" />
-                    <span>Book Room</span>
+                    <MessageCircle className="w-3.5 h-3.5 text-white fill-white" />
+                    <span>Book via WhatsApp</span>
                   </button>
                 ) : (
                   <button
@@ -522,10 +524,10 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onOpenBooking }) => 
                       setIsLightboxOpen(false);
                       onOpenBooking && onOpenBooking();
                     }}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] transition-colors shadow-sm cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-[#22c55e] hover:bg-[#16a34a] transition-colors shadow-sm cursor-pointer"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 text-[#86EFAC]" />
-                    <span>WhatsApp Enquiry</span>
+                    <MessageCircle className="w-3.5 h-3.5 text-white fill-white" />
+                    <span>Book via WhatsApp</span>
                   </button>
                 )}
               </div>

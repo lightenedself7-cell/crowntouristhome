@@ -9,7 +9,6 @@ import { Hero } from './components/Hero';
 import { RoomsSection } from './components/RoomsSection';
 import { FacilitiesSection } from './components/FacilitiesSection';
 import { PhotoGallery } from './components/PhotoGallery';
-import { HousekeepingSection } from './components/HousekeepingSection';
 import { NearbyExplorer } from './components/NearbyExplorer';
 import { NearbyFoodSection } from './components/NearbyFoodSection';
 import { LocationDirections } from './components/LocationDirections';
@@ -58,10 +57,7 @@ export default function App() {
         {/* 4b. Hotel Photo Gallery: Take a Look Around */}
         <PhotoGallery onOpenBooking={handleOpenBooking} />
 
-        {/* 5. Honest Cleanliness & Housekeeping Standards */}
-        <HousekeepingSection />
-
-        {/* 6. Sightseeing & Nearby Attractions Guide (Athirappilly, Thumboormuzhi, Theme Parks, River) */}
+        {/* 5. Sightseeing & Nearby Attractions Guide (Athirappilly, Thumboormuzhi, Theme Parks, River) */}
         <NearbyExplorer />
 
         {/* 7. Nearby Food and Dining Options (Bakeries, tea stalls, multicuisine & highway restaurants) */}

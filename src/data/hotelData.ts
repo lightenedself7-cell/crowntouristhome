@@ -29,6 +29,8 @@ export interface RoomType {
   category: string;
   tagline: string;
   priceEstimate: string;
+  priceDisplay: string;
+  specLine: string;
   bedType: string;
   capacity: string;
   bathroom: string;
@@ -100,7 +102,7 @@ export const HOTEL_INFO = {
   timings: {
     checkInDefault: '12:00 PM',
     checkOutDefault: '12:00 PM',
-    flexibilityNote: 'Flexible check-in and check-out upon coordination with manager for early morning arrivals or late departures.',
+    flexibilityNote: 'Flexible check-in and check-out upon coordination with reception for early morning arrivals or late departures.',
   },
   payments: ['Google Pay (UPI)', 'Direct Cash'],
   managerName: 'Friendly Host & On-Site Team',
@@ -108,72 +110,67 @@ export const HOTEL_INFO = {
 
 export const ROOMS: RoomType[] = [
   {
-    id: 'standard-double-non-ac',
-    name: 'Standard Room (Non-AC)',
-    category: 'Single / Twin / Double',
-    tagline: 'Budget stay with flexible bed options · Non-AC (No TV)',
-    priceEstimate: '₹900 – ₹1,000 / night',
-    bedType: 'Single, 2 Singles, or Double Bed',
-    capacity: '1 – 2 Persons',
-    bathroom: 'Attached Private Clean Washroom',
-    features: [
-      'Bed Options: Single / Twin / Double Bed (₹900 – ₹1,000)',
-      'Non-AC room with high-speed ceiling fan (No TV)',
-      '1 Table & 2 Chairs in room',
-      'Free high-speed Wi-Fi included',
-      'Attached clean washroom with 24/7 water supply',
-      'Clean bed sheets and towels for every guest',
-      'Extra mattress available for ₹200',
-    ],
-    description: 'Clean budget room with flexible bed choices. Non-AC, no TV.',
-    image: '/assets/aistudio/Compact_Blue-Striped_Guest_Room_c4f76418.png',
-    badge: 'Flexible Bed Options',
-  },
-  {
     id: 'deluxe-double-ac',
-    name: 'Deluxe AC Double Room',
+    name: 'Deluxe AC Room',
     category: 'Air Conditioned · TV',
     tagline: 'Cool AC comfort with TV, desk & attached washroom',
-    priceEstimate: '₹1,300 / night',
-    bedType: '1 Double Bed (Comfortable Foam Mattress)',
-    capacity: '2 Persons (+1 on request)',
-    bathroom: 'Attached Clean Tiled Washroom',
+    priceEstimate: '₹1,499 / night',
+    priceDisplay: '₹1,499',
+    specLine: '1 Queen Bed · 2 Guests (Max 3)',
+    bedType: '1 Queen Bed',
+    capacity: '2 Guests (Max 3)',
+    bathroom: 'Attached clean bathroom with 24/7 hot geyser',
     features: [
-      '1 Double Bed (Comfortable foam mattress)',
-      'Efficient Air Conditioning (AC) + High-speed fan',
-      'Wall-mounted TV with cable channels',
-      '1 Table & 2 Chairs in room',
-      'Free high-speed Wi-Fi included',
-      'Attached clean washroom with mirror & 24/7 water',
-      'Clean bed sheets and towels for every guest',
-      'Extra mattress available for ₹200',
+      'High-Efficiency Split Air Conditioning',
+      'Attached bathroom with 24/7 hot geyser',
+      'HD Flat TV with cable channels',
+      'Free high-speed fiber Wi-Fi & work desk',
     ],
-    description: 'AC room with TV, work/dining desk, and attached clean washroom.',
+    description: 'AC room with TV, work/dining desk, and attached clean washroom with 24/7 hot water.',
     image: '/assets/aistudio/Tidy_Bedroom_with_En-Suite_Bathroom_c60cb533.png',
     badge: 'AC + TV',
   },
   {
     id: 'triple-three-bed',
-    name: 'Spacious Triple AC Room (3-4 Persons)',
-    category: 'Air Conditioned · TV',
-    tagline: 'Cool AC room with 2 twin beds, TV, table & chairs',
-    priceEstimate: '₹1,500 – ₹1,600 / night',
-    bedType: '2 Twin Beds',
-    capacity: '3 – 4 Persons',
-    bathroom: 'Spacious Attached Private Clean Washroom',
+    name: 'Spacious AC Triple Room',
+    category: 'Air Conditioned · Family Room',
+    tagline: 'Spacious family room with extra luggage & kids space',
+    priceEstimate: '₹1,999 / night',
+    priceDisplay: '₹1,999',
+    specLine: '1 Queen + 1 Single Bed · 3–4 Guests',
+    bedType: '1 Queen + 1 Single Bed',
+    capacity: '3–4 Guests',
+    bathroom: 'Attached tiled bath with geyser hot shower',
     features: [
-      '2 Twin Beds (Sleeps up to 4 persons)',
-      'Efficient Air Conditioning (AC) + High-speed fan',
-      'Wall-mounted TV with set-top box',
-      '1 Table & 2 Chairs in room for work or dining',
-      'Free high-speed Wi-Fi included',
-      'Spacious attached clean washroom with 24/7 water',
-      'Clean bed sheets and towels for every guest',
-      'Extra mattress available for ₹200',
+      'Extra floor space for luggage & kids',
+      'Heavy-duty Split Air Conditioner',
+      'Attached tiled bath with geyser hot shower',
+      'Wardrobe, electric kettle & daily towels',
     ],
-    description: 'Spacious AC room with 2 twin beds for up to 4 persons, TV, and desk.',
+    description: 'Spacious AC family room with extra floor space, heavy-duty cooling, and attached tiled bath.',
     image: '/assets/aistudio/Spacious_Triple_AC_Room.png',
-    badge: 'AC Room · TV',
+    badge: 'Popular Choice',
+  },
+  {
+    id: 'standard-double-non-ac',
+    name: 'Standard Double Room',
+    category: 'Budget Non-AC',
+    tagline: 'Clean budget room with quiet high-speed fan',
+    priceEstimate: '₹999 / night',
+    priceDisplay: '₹999',
+    specLine: '1 Double Bed · 2 Guests',
+    bedType: '1 Double Bed',
+    capacity: '2 Guests',
+    bathroom: 'Clean attached bathroom with shower',
+    features: [
+      'High ceiling with quiet high-speed fan',
+      'Large window with tropical garden breeze',
+      'Clean attached bathroom with shower',
+      'Freshly laundered linens & bottled water',
+    ],
+    description: 'Clean budget double room with quiet high-speed ceiling fan, fresh linens, and attached bath.',
+    image: '/assets/aistudio/Compact_Blue-Striped_Guest_Room_c4f76418.png',
+    badge: 'Budget Friendly',
   },
 ];
 
@@ -366,7 +363,7 @@ export const HOUSE_POLICIES = [
   {
     title: 'Free Wi-Fi & Room Amenities',
     description:
-      'Free Wi-Fi is available across Crown Tourist Home. Every room comes furnished with 1 table and 2 chairs. AC rooms include a wall-mounted TV (Non-AC rooms do not have a TV). Extra floor mattress is available for ₹200.',
+      'Free Wi-Fi is available across Crown Tourist Home. AC rooms include a wall-mounted TV (Non-AC rooms do not have a TV). Extra floor mattress is available for ₹200.',
   },
   {
     title: 'Bed & Attached Washroom Only (No In-House Kitchen)',
@@ -393,19 +390,19 @@ export const HOUSE_POLICIES = [
 export const FAQS = [
   {
     q: 'How do I book a room at Crown Tourist Home?',
-    a: 'We do not use complicated online OTA booking engines. Simply click "Book via WhatsApp" (+91 81296 46522) or give the manager a direct phone call (+91 80780 81022). You can confirm your dates, room choice, and get immediate confirmation with no booking commissions.',
+    a: 'We do not use complicated online OTA booking engines. Simply click "Book via WhatsApp" (+91 81296 46522) or give reception a direct phone call (+91 62827 08488). You can confirm your dates, room choice, and get immediate confirmation with no booking commissions.',
   },
   {
     q: 'Is there Wi-Fi available at Crown Tourist Home?',
-    a: 'Yes, free high-speed Wi-Fi is provided throughout Crown Tourist Home for all staying guests.',
+    a: 'Yes, free Wi-Fi is provided throughout Crown Tourist Home for all staying guests.',
   },
   {
     q: 'What bed options are available for Standard Non-AC rooms?',
     a: 'Standard Non-AC rooms offer flexible bed choices: 1 Single Bed, 2 Single Beds (twin beds), or 1 Double Bed at ₹900 – ₹1,000 per night. Prices depend on single vs double occupancy.',
   },
   {
-    q: 'Do rooms have TVs, tables, and chairs?',
-    a: 'Every room at Crown Tourist Home is equipped with 1 table and 2 chairs. Air-conditioned rooms (Deluxe AC Double Room and Spacious Triple Room) feature a wall-mounted TV with cable channels. Non-AC rooms do not have a TV.',
+    q: 'Do rooms have TVs?',
+    a: 'Air-conditioned rooms (Deluxe AC Room and Spacious Triple Room) feature a wall-mounted TV with cable channels. Non-AC rooms do not have a TV.',
   },
   {
     q: 'Can I get an extra mattress?',

@@ -116,13 +116,13 @@ Please let me know if this room is available for these dates and confirm the tar
   return (
     <section className="relative pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-8 lg:pb-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Single Wide Horizontal Hero Accommodation Card */}
+        {/* Single Wide Horizontal Hero Accommodation Card (Bright Daylight Style) */}
         <div
-          className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#E3DBD0] bg-[#1A1815] aspect-[4/4] sm:aspect-[16/10] md:aspect-[2.2/1] lg:aspect-[2.7/1] min-h-[460px] sm:min-h-[480px] lg:min-h-[520px] group"
+          className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#E3DBD0] bg-[#FAF8F5] aspect-[4/4] sm:aspect-[16/10] md:aspect-[2.2/1] lg:aspect-[2.7/1] min-h-[460px] sm:min-h-[480px] lg:min-h-[520px] group"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Background Images Carousel */}
+          {/* Background Images Carousel - Vibrant Natural Daylight */}
           {HERO_SLIDES.map((slide, idx) => (
             <div
               key={slide.id}
@@ -134,43 +134,31 @@ Please let me know if this room is available for these dates and confirm the tar
                 src={slide.url}
                 alt={slide.title}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-[center_35%] sm:object-[center_30%]"
+                className="w-full h-full object-cover object-[center_35%] sm:object-[center_30%] brightness-[1.04] contrast-[1.02]"
                 loading={idx === 0 ? 'eager' : 'lazy'}
               />
             </div>
           ))}
 
-          {/* Dark Gradient Overlay for Maximum Legibility */}
-          <div className="absolute inset-0 z-15 bg-gradient-to-t from-black/95 via-black/55 via-50% to-black/20 pointer-events-none" />
+          {/* Bright Daylight Hero: Subtle localized bottom-left scrim keeping sky, building and trees bright and sunny */}
+          <div className="absolute inset-0 z-15 bg-gradient-to-t from-black/75 via-black/25 via-40% to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 z-15 bg-gradient-to-r from-black/60 via-black/15 to-transparent pointer-events-none" />
 
-          {/* Top Bar inside Card: River Location Badge & Slide Dots */}
-          <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-20 flex items-center justify-between gap-3 pointer-events-auto">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-xs font-semibold text-white">
-                <span className="w-2 h-2 rounded-full bg-[#7EE787] animate-pulse" />
-                Beside Chalakudy River
-              </span>
-              <span className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-xs font-medium text-white border border-white/20">
-                Pariyaram, Kerala
-              </span>
-            </div>
-
-            {/* Slide Navigation Dots */}
-            <div className="flex items-center gap-1.5 bg-black/45 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
-              <span className="text-[11px] font-medium text-white/80 mr-1 hidden sm:inline">
-                {HERO_SLIDES[currentSlide].tag}
-              </span>
-              {HERO_SLIDES.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  aria-label={`Go to slide ${idx + 1}`}
-                  className={`transition-all rounded-full ${
-                    idx === currentSlide ? 'w-5 h-1.5 bg-[#7EE787]' : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'
-                  }`}
-                />
-              ))}
-            </div>
+          {/* Slide Navigation Dots (Subtle in top right) */}
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 flex items-center gap-1.5 bg-black/35 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 pointer-events-auto">
+            <span className="text-[11px] font-medium text-white/90 mr-1 hidden sm:inline">
+              {HERO_SLIDES[currentSlide].tag}
+            </span>
+            {HERO_SLIDES.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`transition-all rounded-full ${
+                  idx === currentSlide ? 'w-5 h-1.5 bg-[#25D366]' : 'w-1.5 h-1.5 bg-white/60 hover:bg-white/90'
+                }`}
+              />
+            ))}
           </div>
 
           {/* Carousel Next / Prev Controls */}
@@ -178,7 +166,7 @@ Please let me know if this room is available for these dates and confirm the tar
             type="button"
             onClick={handlePrevSlide}
             aria-label="Previous slide"
-            className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-25 p-2 sm:p-2.5 rounded-full bg-black/40 text-white hover:bg-black/70 backdrop-blur-xs transition-opacity opacity-75 sm:opacity-0 group-hover:opacity-100"
+            className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-25 p-2 sm:p-2.5 rounded-full bg-black/35 text-white hover:bg-black/60 backdrop-blur-xs transition-opacity opacity-75 sm:opacity-0 group-hover:opacity-100"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -186,7 +174,7 @@ Please let me know if this room is available for these dates and confirm the tar
             type="button"
             onClick={handleNextSlide}
             aria-label="Next slide"
-            className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-25 p-2 sm:p-2.5 rounded-full bg-black/40 text-white hover:bg-black/70 backdrop-blur-xs transition-opacity opacity-75 sm:opacity-0 group-hover:opacity-100"
+            className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-25 p-2 sm:p-2.5 rounded-full bg-black/35 text-white hover:bg-black/60 backdrop-blur-xs transition-opacity opacity-75 sm:opacity-0 group-hover:opacity-100"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -195,50 +183,38 @@ Please let me know if this room is available for these dates and confirm the tar
           <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-8 lg:p-12 z-20 text-white pointer-events-none">
             <div className="max-w-3xl pointer-events-auto">
               {/* Location Eyebrow */}
-              <div className="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#E5DDCF] mb-2 drop-shadow-sm">
-                <span className="text-[#A3E635] font-bold">Beside Chalakudy River</span>
-                <span aria-hidden="true" className="text-white/60">·</span>
-                <span>Pariyaram, Kerala</span>
-                <span aria-hidden="true" className="text-white/60">·</span>
-                <span>Chalakudy–Anamala Road</span>
+              <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold tracking-wider uppercase text-amber-300 mb-2 drop-shadow-md">
+                <MapPin className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+                <span>PARIYARAM, KERALA · CHALAKUDY–ANAMALA ROAD</span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-editorial text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] font-semibold text-white tracking-tight leading-[1.14] drop-shadow-md text-balance">
+              <h1 className="font-editorial text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] font-bold text-white tracking-tight leading-[1.14] drop-shadow-lg text-balance">
                 Clean, Comfortable &amp; Affordable Stay on Athirappilly Road
               </h1>
 
               {/* Short Description */}
-              <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base text-white/90 leading-relaxed max-w-2xl drop-shadow-sm font-normal">
-                A budget-friendly tourist home in Pariyaram, Kerala, beside the Chalakudy River. Enjoy clean rooms, essential comforts and convenient access to Athirappilly Waterfalls and water theme parks.
+              <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base text-white/95 leading-relaxed max-w-2xl drop-shadow-md font-normal">
+                Spotless AC &amp; Non-AC family rooms located right on the Athirappilly scenic highway. Experience fresh river breezes, secure covered car parking, and genuine Kerala hospitality just 20 minutes from the waterfalls.
               </p>
 
               {/* Booking Actions */}
               <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => onOpenBooking()}
-                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3.5 text-xs sm:text-sm font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] active:scale-[0.98] rounded-xl shadow-lg border border-white/20 transition-all min-h-[44px]"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3.5 text-xs sm:text-sm font-semibold text-white bg-[#22c55e] hover:bg-[#16a34a] active:scale-[0.98] rounded-xl shadow-lg transition-all min-h-[44px]"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#7EE787] shrink-0" />
+                  <MessageCircle className="w-4 h-4 text-white fill-white shrink-0" />
                   <span>Book via WhatsApp</span>
                 </button>
 
                 <a
                   href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`}
-                  className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3.5 text-xs sm:text-sm font-medium text-white bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-xl border border-white/25 transition-all min-h-[44px]"
+                  className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3.5 text-xs sm:text-sm font-medium text-white bg-black/35 hover:bg-black/50 backdrop-blur-md rounded-xl border border-white/30 transition-all min-h-[44px]"
+                  title="Call Reception"
                 >
-                  <Phone className="w-4 h-4 text-[#E5DDCF] shrink-0" />
-                  <span>Call Manager: {HOTEL_INFO.phoneDisplay}</span>
-                </a>
-
-                <a
-                  href={HOTEL_INFO.googleMapsUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-white/90 hover:text-white hover:underline transition-colors"
-                >
-                  <span>View on Google Maps</span>
-                  <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+                  <Phone className="w-4 h-4 text-white shrink-0" />
+                  <span>Call Reception</span>
                 </a>
               </div>
             </div>
@@ -447,19 +423,19 @@ Please let me know if this room is available for these dates and confirm the tar
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0">
                 <a
                   href={`tel:${HOTEL_INFO.phonePrimary.replace(/\s+/g, '')}`}
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs font-medium text-[#373129] bg-[#EFE9DD] hover:bg-[#E5DDCF] rounded-xl transition-colors min-h-[44px]"
-                  title={`Call Manager (${HOTEL_INFO.phoneDisplay})`}
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs font-semibold text-[#0E4D40] bg-[#FAF8F5] hover:bg-[#F2ECE1] border border-[#D5CDC1] rounded-xl transition-colors min-h-[44px]"
+                  title="Call Reception"
                 >
-                  <Phone className="w-3.5 h-3.5 text-[#7A5835]" />
-                  <span>Call Manager: {HOTEL_INFO.phoneDisplay}</span>
+                  <Phone className="w-3.5 h-3.5 text-[#0E4D40]" />
+                  <span>Call Reception</span>
                 </a>
 
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold text-white bg-[#2D4A3E] hover:bg-[#233A30] active:scale-[0.98] rounded-xl shadow-md transition-all min-h-[44px]"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold text-white bg-[#22c55e] hover:bg-[#16a34a] active:scale-[0.98] rounded-xl shadow-md transition-all min-h-[44px] cursor-pointer"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#7EE787] shrink-0" />
-                  <span>Check Availability on WhatsApp</span>
+                  <MessageCircle className="w-4 h-4 text-white fill-white shrink-0" />
+                  <span>Book via WhatsApp</span>
                 </button>
               </div>
             </div>

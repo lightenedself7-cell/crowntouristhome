@@ -6,15 +6,15 @@ export const FacilitiesSection: React.FC = () => {
   const facilitiesList = [
     {
       icon: <Wifi className="w-5 h-5 text-[#2D4A3E]" />,
-      title: 'Free High-Speed Wi-Fi',
+      title: 'Free Wi-Fi',
       desc: 'Complimentary wireless internet access available across all guest rooms, corridors, and common spaces.',
       badge: 'Included in all rooms',
     },
     {
       icon: <BedDouble className="w-5 h-5 text-[#7A5835]" />,
-      title: '1 Table & 2 Chairs in Every Room',
-      desc: 'Dedicated wooden furniture in every room category for comfortable in-room dining, resting, or work.',
-      badge: 'Furnished standard',
+      title: 'Extra Mattress on Request',
+      desc: 'Comfortable additional floor mattress available for ₹200 to easily accommodate extra guests or children.',
+      badge: '₹200 per night',
     },
     {
       icon: <Tv className="w-5 h-5 text-[#2D4A3E]" />,

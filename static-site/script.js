@@ -146,19 +146,19 @@ Please let me know if this is available. Thank you!`;
       url: 'images/triple_room.jpg',
       title: 'Spacious Triple AC Room',
       tag: 'AC + TV · ₹1,500–₹1,600 / night',
-      desc: 'Generously sized air-conditioned family room featuring wooden beds, fresh linens, dining table & chairs, wall-mounted television, and attached clean washroom.'
+      desc: 'Generously sized air-conditioned family room featuring wooden beds, fresh linens, wall-mounted television, and attached clean washroom.'
     },
     {
       url: 'images/deluxe_room.jpg',
       title: 'Deluxe AC Double Room',
       tag: 'AC + TV · ₹1,300 / night',
-      desc: 'Comfortable air-conditioned double room with quality foam mattress, dedicated work/dining desk, cable television, and private attached washroom.'
+      desc: 'Comfortable air-conditioned double room with quality foam mattress, dedicated work desk, cable television, and private attached washroom.'
     },
     {
       url: 'images/standard_room.jpg',
       title: 'Standard Room (Non-AC)',
       tag: 'Ceiling Fan · ₹900–₹1,000 / night',
-      desc: 'Affordable, well-ventilated budget room with comfortable bed, high-speed ceiling fan, table with seating, and private attached washroom.'
+      desc: 'Affordable, well-ventilated budget room with comfortable bed, high-speed ceiling fan, and private attached washroom.'
     },
     {
       url: 'images/hallway.jpg',
