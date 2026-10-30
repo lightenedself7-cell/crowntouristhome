@@ -60,31 +60,51 @@ export const RoomsSection: React.FC<RoomsSectionProps> = ({ onOpenBooking }) => 
                   loading="lazy"
                 />
                 {room.badge && (
-                  <div className="absolute top-3 left-3 bg-[#0E4D40]/90 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow-sm">
+                  <div className="absolute top-3 left-3 bg-neutral-900/85 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow-sm">
                     <span>{room.badge}</span>
                   </div>
                 )}
+                <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm text-neutral-900 text-xs font-semibold px-2.5 py-1 rounded-md shadow-sm border border-neutral-200/80">
+                  {room.priceEstimate}
+                </div>
               </div>
 
               {/* Room Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                 <div>
                   {/* Title in Deep Forest Teal/Green */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#0E4D40] tracking-tight">
+                  <h3 className="font-editorial text-xl sm:text-2xl font-bold text-[#0E4D40] tracking-tight">
                     {room.name}
                   </h3>
 
-                  {/* Bed & Guest Specs in Golden Bronze */}
-                  <div className="mt-1.5 flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#C58A3C]">
-                    <Bed className="w-4 h-4 text-[#C58A3C] shrink-0" />
-                    <span>{room.specLine}</span>
+                  {/* Subtitle / Tagline from screenshot */}
+                  <p className="mt-1 text-xs sm:text-sm text-[#5C5449]">
+                    {room.tagline}
+                  </p>
+
+                  {/* Bed, Guest & Bath Specs */}
+                  <div className="mt-3 pt-2.5 border-t border-[#F0EBE0] flex items-center flex-wrap gap-x-3 gap-y-1 text-xs font-medium text-[#7A5835]">
+                    <div className="flex items-center gap-1">
+                      <Bed className="w-3.5 h-3.5 text-[#C58A3C] shrink-0" />
+                      <span>{room.bedType}</span>
+                    </div>
+                    <span className="text-[#D3CBC0]">·</span>
+                    <div className="flex items-center gap-1">
+                      <Users className="w-3.5 h-3.5 text-[#C58A3C] shrink-0" />
+                      <span>{room.capacity}</span>
+                    </div>
+                    <span className="text-[#D3CBC0]">·</span>
+                    <div className="flex items-center gap-1">
+                      <Bath className="w-3.5 h-3.5 text-[#C58A3C] shrink-0" />
+                      <span>{room.bathroom}</span>
+                    </div>
                   </div>
 
                   {/* Feature Checklist matching screenshot */}
                   <div className="mt-4 space-y-2">
                     {room.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-[#374151]">
-                        <Check className="w-4 h-4 text-neutral-800 shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-2 text-xs text-[#374151]">
+                        <Check className="w-3.5 h-3.5 text-neutral-800 shrink-0 mt-0.5" />
                         <span className="leading-snug">{feature}</span>
                       </div>
                     ))}
