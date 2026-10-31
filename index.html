@@ -49,6 +49,9 @@
     <meta name="twitter:image" content="https://crowntouristhome.com/assets/images/entrance.webp" />
     <meta name="twitter:image:alt" content="Crown Tourist Home on Chalakudy-Anamala Road near Athirappilly" />
 
+    <!-- Machine-Readable AI Agent Context (Agentic Browsing Discovery) -->
+    <link rel="alternate" type="text/markdown" title="LLM context" href="/llms.txt" />
+
     <!-- Critical Hero Image Preloads for Mobile & Desktop (LCP Optimization) -->
     <link rel="preload" as="image" href="/assets/images/entrance-mobile.webp" media="(max-width: 768px)" type="image/webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/assets/images/entrance.webp" media="(min-width: 769px)" type="image/webp" fetchpriority="high" />
@@ -289,6 +292,42 @@
         }
       ]
     }
+    </script>
+    <script>
+      (function() {
+        try {
+          var mc = window.modelContext || (typeof navigator !== 'undefined' && navigator.modelContext);
+          if (mc && typeof mc.registerTool === 'function') {
+            mc.registerTool({
+              name: 'checkRoomAvailability',
+              description: 'Check room types, tariffs, and direct booking details for Crown Tourist Home in Pariyaram, Kerala',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  roomType: { type: 'string', enum: ['standard', 'deluxe_ac', 'triple_ac'], description: 'Room category' },
+                  checkIn: { type: 'string', description: 'Check-in date (YYYY-MM-DD)' },
+                  checkOut: { type: 'string', description: 'Check-out date (YYYY-MM-DD)' }
+                }
+              },
+              handler: function(args) {
+                return Promise.resolve({
+                  property: 'Crown Tourist Home',
+                  location: 'Poovathingal, Chalakudy - Anamala Road, Pariyaram, Kerala 680721',
+                  receptionPhone: '+91 62827 08488',
+                  whatsappBooking: 'https://wa.me/918129646522',
+                  tariffs: {
+                    standard: '₹900 - ₹1,000 / night',
+                    deluxe_ac: '₹1,300 / night',
+                    triple_ac: '₹1,500 - ₹1,600 / night'
+                  }
+                });
+              }
+            });
+          }
+        } catch (e) {
+          // Graceful fallback if modelContext is not supported
+        }
+      })();
     </script>
   </head>
   <body class="bg-[#FAF8F5] text-[#242424] antialiased selection:bg-[#E8DCC8] selection:text-[#1F2937]">

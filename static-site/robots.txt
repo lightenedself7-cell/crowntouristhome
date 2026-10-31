@@ -1,0 +1,12 @@
+# Robots.txt for Crown Tourist Home
+# Official Domain: https://crowntouristhome.com/
+
+User-agent: *
+Allow: /
+
+# XML Sitemap
+Sitemap: https://crowntouristhome.com/sitemap.xml
+
+# Machine-Readable AI Agent Context
+# Reference: https://llmstxt.org/
+LLM-Context: https://crowntouristhome.com/llms.txt

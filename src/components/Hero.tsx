@@ -143,8 +143,7 @@ Please let me know if this room is available for these dates and confirm the tar
                   className="w-full h-full object-cover object-[center_35%] sm:object-[center_30%] brightness-[1.04] contrast-[1.02]"
                   loading={idx === 0 ? 'eager' : 'lazy'}
                   decoding={idx === 0 ? 'sync' : 'async'}
-                  // @ts-expect-error React fetchPriority property
-                  fetchpriority={idx === 0 ? 'high' : 'auto'}
+                  fetchPriority={idx === 0 ? 'high' : 'auto'}
                   width="1400"
                   height="600"
                 />
