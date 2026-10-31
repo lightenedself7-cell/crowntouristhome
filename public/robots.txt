@@ -7,6 +7,4 @@ Allow: /
 # XML Sitemap
 Sitemap: https://crowntouristhome.com/sitemap.xml
 
-# Machine-Readable AI Agent Context
-# Reference: https://llmstxt.org/
-LLM-Context: https://crowntouristhome.com/llms.txt
+# Machine-Readable AI Context: https://crowntouristhome.com/llms.txt
