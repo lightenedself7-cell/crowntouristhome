@@ -58,6 +58,9 @@ export const RoomsSection: React.FC<RoomsSectionProps> = ({ onOpenBooking }) => 
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="450"
                 />
                 {room.badge && (
                   <div className="absolute top-3 left-3 bg-neutral-900/85 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow-sm">

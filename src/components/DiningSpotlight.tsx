@@ -58,6 +58,9 @@ export const DiningSpotlight: React.FC = () => {
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
+                width="600"
+                height="450"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 

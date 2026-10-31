@@ -39,6 +39,9 @@ export const CSRCheckDamSection: React.FC = () => {
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
                     loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="375"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 

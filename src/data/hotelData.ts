@@ -9,14 +9,14 @@ export interface HeroSlide {
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 'entrance-day',
-    url: '/assets/aistudio/Crown_Tourist_Home_Entrance_725f6b0e.png',
+    url: '/assets/images/entrance.webp',
     title: 'Main Entrance & Front Parking',
     caption: 'Poovathingal, Pariyaram · Athirappilly Route',
     tag: 'Day View · Direct Highway Access',
   },
   {
     id: 'entrance-dusk',
-    url: '/assets/aistudio/Crown_Tourist_Home_at_Dusk_77e290a6.png',
+    url: '/assets/images/dusk.webp',
     title: 'Exterior View at Dusk & 24/7 Access',
     caption: 'Chalakudy - Anamala Road · Poovathingal',
     tag: 'Dusk View · Well-Lit Parking & 24/7 Security',
@@ -90,10 +90,10 @@ export const HOTEL_INFO = {
   whatsappNumber: '918129646522',
   whatsappDisplay: '+91 81296 46522',
   googleMapsUrl: 'https://maps.app.goo.gl/Fsn2SShR5fRS5y9f8',
-  heroImage: '/assets/aistudio/Crown_Tourist_Home_Entrance_725f6b0e.png',
-  heroImageDusk: '/assets/aistudio/Crown_Tourist_Home_at_Dusk_77e290a6.png',
+  heroImage: '/assets/images/entrance.webp',
+  heroImageDusk: '/assets/images/dusk.webp',
   heroSlides: HERO_SLIDES,
-  entranceImage: '/assets/aistudio/Crown_Tourist_Home_Entrance_725f6b0e.png',
+  entranceImage: '/assets/images/entrance.webp',
   heroCaption: 'Chalakudy - Anamala Road, Poovathingal',
   coordinates: {
     lat: 10.3190184,
@@ -130,7 +130,7 @@ export const ROOMS: RoomType[] = [
       'Extra mattress available for ₹200',
     ],
     description: 'Budget stay with flexible bed options, high-speed ceiling fan, 1 table & 2 chairs, attached clean washroom with 24/7 water supply, and free Wi-Fi.',
-    image: '/assets/aistudio/Compact_Blue-Striped_Guest_Room_c4f76418.png',
+    image: '/assets/images/standard_room.webp',
     badge: 'Flexible Bed Options',
   },
   {
@@ -155,7 +155,7 @@ export const ROOMS: RoomType[] = [
       'Extra mattress available for ₹200',
     ],
     description: 'Cool AC comfort with TV, desk, 1 table & 2 chairs, attached clean washroom with mirror & 24/7 water, and free Wi-Fi.',
-    image: '/assets/aistudio/Tidy_Bedroom_with_En-Suite_Bathroom_c60cb533.png',
+    image: '/assets/images/deluxe_room.webp',
     badge: 'AC + TV',
   },
   {
@@ -180,7 +180,7 @@ export const ROOMS: RoomType[] = [
       'Extra mattress available for ₹200',
     ],
     description: 'Cool AC room with 2 twin beds (sleeps up to 4), TV, table & chairs for work or dining, spacious attached washroom, and free Wi-Fi.',
-    image: '/assets/aistudio/Bright_Budget_Hotel_Room_Interior_b005eefe.png',
+    image: '/assets/images/triple_room.webp',
     badge: 'AC Room · TV',
   },
 ];
@@ -194,7 +194,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '1 min walk',
     description:
       'The beautiful Chalakudy River flows right beside Crown Tourist Home. Guests can enjoy soothing water views, refreshing river breezes, and a peaceful natural setting just steps from the hotel rooms.',
-    image: '/assets/images/chalakudy_river.jpg',
+    image: '/assets/images/chalakudy_river.webp',
     travelTip: 'Perfect for morning walks, quiet sunset views, and soaking in the tranquil river ambiance right next door.',
     highlight: 'Flows right next to hotel · Scenic river view',
   },
@@ -206,7 +206,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '3 min drive / 15 min walk',
     description:
       'A scenic river check-dam and weir across the Chalakudy River in Pariyaram (Kombanpara Thadayana). Fresh river water flows over the smooth weir edge into cascading ripples. A peaceful 4.5-star rated local spot to unwind, enjoy cool river breezes, and relax in the evening.',
-    image: '/assets/images/csr_check_dam.jpg',
+    image: '/assets/images/csr_check_dam.webp',
     travelTip: '4.5 ★ on Google (408+ reviews). Open 24 hours; late afternoon and golden hour are ideal for tranquil river relaxation.',
     highlight: '4.5 ★ rating (408 reviews) · Scenic river cascades',
   },
@@ -218,7 +218,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '25 min drive',
     description:
       'Kerala’s most celebrated natural landmark, known as the "Niagara of India". An 80-foot majestic cascade framed by lush Western Ghats rainforest.',
-    image: '/assets/images/athirappilly_falls.jpg',
+    image: '/assets/images/athirappilly_falls.webp',
     travelTip: 'Visit early morning (8:30 AM to 11:00 AM) or after 3:30 PM for lesser crowds and cooler forest breezes.',
     highlight: 'Iconic 80-foot waterfall cascade',
   },
@@ -230,7 +230,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '12 min drive',
     description:
       'A picturesque check-dam with an iconic pedestrian suspension hanging bridge across the Chalakudy River, accompanied by a vibrant butterfly garden and river park.',
-    image: '/assets/images/thumboormuzhi.jpg',
+    image: '/assets/images/thumboormuzhi.webp',
     travelTip: 'Walk across the bridge to reach Ezhattumugham Nature Village on the opposite riverbank.',
     highlight: 'Scenic suspension bridge & river views',
   },
@@ -242,7 +242,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '5 min drive',
     description:
       'A sprawling family water and amusement park located right along Athirappilly Road with thrilling water rides, wave pool, and rain dance.',
-    image: '/assets/images/dream_world.jpg',
+    image: '/assets/images/dream_world.webp',
     travelTip: 'Ideal morning activity before checking into Crown Tourist Home for a relaxing evening.',
     highlight: 'Right up the road from the hotel',
   },
@@ -254,7 +254,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '10 min drive',
     description:
       'Another top amusement hub featuring high-thrill roller rides, water slides, and the sub-zero indoor Snow Storm experience.',
-    image: '/assets/images/silver_storm.jpg',
+    image: '/assets/images/silver_storm.webp',
     travelTip: 'Great choice for kids and groups looking for full-day amusement park fun.',
     highlight: 'Water rides and sub-zero snow dome',
   },
@@ -266,7 +266,7 @@ export const NEARBY_ATTRACTIONS: Attraction[] = [
     travelTime: '32 min drive',
     description:
       'Further up into the pristine Sholayar forest corridor past Athirappilly, offering gushing roadside falls at Charpa and the rapid cascade of Vazhachal.',
-    image: '/assets/images/vazhachal_falls.jpg',
+    image: '/assets/images/vazhachal_falls.webp',
     travelTip: 'Requires Athirappilly check-post forest entry pass (valid for both Athirappilly and Vazhachal).',
     highlight: 'Deep rainforest & natural rapids',
   },
@@ -329,7 +329,7 @@ export const DINING_HIGHLIGHTS: DiningSpot[] = [
       },
     ],
     isWalkable: false,
-    image: '/assets/images/crown_kerala_meal_vasuettan_1792966716121.jpg',
+    image: '/assets/images/vasuettan_meals.webp',
     mapsUrl: 'https://maps.app.goo.gl/ZjusQeurZryUaqcS9',
   },
   {
@@ -485,7 +485,7 @@ export const NEARBY_FOOD_INFO = {
     mapsUrl: 'https://maps.app.goo.gl/ZjusQeurZryUaqcS9',
     description:
       'With an outstanding 4.5 rating from over 6,616 Google reviews, Vasuvettante Kada is a celebrated gastronomic icon on the Chalakudy - Athirappilly road. Highly sought-after by travelers and locals alike for serving piping hot Kerala noon meals on fresh banana leaves alongside tender spicy beef fry, rich prawns paal curry, crispy fish fry, and country duck roast at very budget-friendly rates.',
-    image: '/assets/images/crown_kerala_meal_vasuettan_1792966716121.jpg',
+    image: '/assets/images/vasuettan_meals.webp',
     specialties: [
       'Nadan Beef Fry slow-roasted with coconut chips',
       'Chemmeen Paal Curry (prawns in coconut milk)',

@@ -130,13 +130,25 @@ Please let me know if this room is available for these dates and confirm the tar
                 idx === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-              <img
-                src={slide.url}
-                alt={slide.title}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-[center_35%] sm:object-[center_30%] brightness-[1.04] contrast-[1.02]"
-                loading={idx === 0 ? 'eager' : 'lazy'}
-              />
+              <picture className="w-full h-full">
+                <source
+                  media="(max-width: 768px)"
+                  srcSet={idx === 0 ? '/assets/images/entrance-mobile.webp' : slide.url}
+                  type="image/webp"
+                />
+                <img
+                  src={slide.url}
+                  alt={slide.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover object-[center_35%] sm:object-[center_30%] brightness-[1.04] contrast-[1.02]"
+                  loading={idx === 0 ? 'eager' : 'lazy'}
+                  decoding={idx === 0 ? 'sync' : 'async'}
+                  // @ts-expect-error React fetchPriority property
+                  fetchpriority={idx === 0 ? 'high' : 'auto'}
+                  width="1400"
+                  height="600"
+                />
+              </picture>
             </div>
           ))}
 

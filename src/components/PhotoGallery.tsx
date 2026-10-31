@@ -30,7 +30,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     tag: 'Chalakudy–Anamala Highway Frontage',
     description:
       'Evening view of Crown Tourist Home on the Chalakudy–Anamala Road in Pariyaram with warm ambient lighting, secure front vehicle parking, and clear roadside signage.',
-    url: '/assets/aistudio/Crown_Tourist_Home_at_Dusk_77e290a6.png',
+    url: '/assets/images/dusk.webp',
     alt: 'Crown Tourist Home building at dusk with decorative lighting, parking area, and road sign in Pariyaram',
   },
   {
@@ -40,7 +40,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     tag: 'Direct Highway Access · On-Site Parking',
     description:
       'Daytime entrance along the scenic route to Athirappilly Waterfalls, offering direct road-level access and dedicated vehicle parking spaces for cars and two-wheelers.',
-    url: '/assets/aistudio/Crown_Tourist_Home_Entrance_725f6b0e.png',
+    url: '/assets/images/entrance.webp',
     alt: 'Main entrance and front parking area of Crown Tourist Home on Chalakudy-Anamala Road',
   },
   {
@@ -50,7 +50,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     tag: 'AC + TV · ₹1,500–₹1,600 / night',
     description:
       'Generously sized air-conditioned family room featuring wooden beds, fresh linens, wall-mounted television, and attached clean washroom.',
-    url: '/assets/aistudio/Bright_Budget_Hotel_Room_Interior_b005eefe.png',
+    url: '/assets/images/triple_room.webp',
     alt: 'Spacious Triple AC Room with wooden beds, blue-striped linen, desk, TV, and attached clean washroom',
     roomId: 'spacious-family-triple-ac',
   },
@@ -61,7 +61,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     tag: 'AC + TV · ₹1,300 / night',
     description:
       'Comfortable air-conditioned double room with quality foam mattress, dedicated work desk, cable television, and private attached washroom with 24/7 water supply.',
-    url: '/assets/aistudio/Tidy_Bedroom_with_En-Suite_Bathroom_c60cb533.png',
+    url: '/assets/images/deluxe_room.webp',
     alt: 'Deluxe AC Double Room with wooden double bed, TV, work desk, and open door to private en-suite bathroom',
     roomId: 'deluxe-double-ac',
   },
@@ -72,7 +72,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     tag: 'Ceiling Fan · ₹900–₹1,000 / night',
     description:
       'Affordable, well-ventilated budget room with comfortable bed, high-speed ceiling fan, and private attached washroom. Ideal for budget-conscious travellers.',
-    url: '/assets/aistudio/Compact_Blue-Striped_Guest_Room_c4f76418.png',
+    url: '/assets/images/standard_room.webp',
     alt: 'Standard Non-AC room with double bed, blue striped linen, ceiling fan, and private attached washroom',
     roomId: 'standard-double-non-ac',
   },
@@ -83,7 +83,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     tag: 'Clean Tiled Floors · 24/7 Security',
     description:
       'Bright, spotless interior hallway with gleaming tile floors, room entrances, natural daylight, potted plants, and clear exit access for guest safety and comfort.',
-    url: '/assets/aistudio/Symmetrical_Hallway_to_the_Exit__1__de651276.png',
+    url: '/assets/images/hallway.webp',
     alt: 'Bright interior hallway corridor at Crown Tourist Home with tiled flooring, room 103 door, and exit doors',
   },
 ];
@@ -205,7 +205,10 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onOpenBooking }) => 
               alt={currentItem.alt}
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center transition-all duration-500 ease-out animate-in fade-in"
-              loading="eager"
+              loading="lazy"
+              decoding="async"
+              width="1000"
+              height="562"
             />
 
             {/* Gradient Overlays for readable text and depth */}
@@ -368,6 +371,9 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onOpenBooking }) => 
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
+                    decoding="async"
+                    width="200"
+                    height="150"
                   />
                   <div
                     className={`absolute inset-0 transition-colors ${

@@ -87,6 +87,9 @@ export const NearbyExplorer: React.FC = () => {
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="375"
                   />
                   <div className="absolute top-3 right-3 bg-[#1F1E1B]/85 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded">
                     {spot.distance}

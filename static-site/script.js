@@ -131,37 +131,37 @@ Please let me know if this is available. Thank you!`;
   // --- 4. Interactive Photo Gallery & Lightbox ---
   const galleryItems = [
     {
-      url: 'images/dusk.jpg',
+      url: 'images/dusk.webp',
       title: 'Crown Tourist Home at Dusk',
       tag: 'Chalakudy–Anamala Highway Frontage',
       desc: 'Evening view of Crown Tourist Home on Chalakudy–Anamala Road in Pariyaram with warm ambient lighting, secure parking, and clear roadside signage.'
     },
     {
-      url: 'images/entrance.jpg',
+      url: 'images/entrance.webp',
       title: 'Main Entrance & Front Parking',
       tag: 'Direct Highway Access · On-Site Parking',
       desc: 'Daytime entrance along the scenic route to Athirappilly Waterfalls with direct road-level access and dedicated parking.'
     },
     {
-      url: 'images/triple_room.jpg',
+      url: 'images/triple_room.webp',
       title: 'Spacious Triple AC Room',
       tag: 'AC + TV · ₹1,500–₹1,600 / night',
       desc: 'Generously sized air-conditioned family room featuring wooden beds, fresh linens, wall-mounted television, and attached clean washroom.'
     },
     {
-      url: 'images/deluxe_room.jpg',
+      url: 'images/deluxe_room.webp',
       title: 'Deluxe AC Double Room',
       tag: 'AC + TV · ₹1,300 / night',
       desc: 'Comfortable air-conditioned double room with quality foam mattress, dedicated work desk, cable television, and private attached washroom.'
     },
     {
-      url: 'images/standard_room.jpg',
+      url: 'images/standard_room.webp',
       title: 'Standard Room (Non-AC)',
       tag: 'Ceiling Fan · ₹900–₹1,000 / night',
       desc: 'Affordable, well-ventilated budget room with comfortable bed, high-speed ceiling fan, and private attached washroom.'
     },
     {
-      url: 'images/hallway.jpg',
+      url: 'images/hallway.webp',
       title: 'Symmetrical Hallway to the Exit',
       tag: 'Clean Tiled Floors · 24/7 Security',
       desc: 'Bright, spotless interior hallway with gleaming tile floors, room entrances, natural daylight, potted plants, and clear exit access.'

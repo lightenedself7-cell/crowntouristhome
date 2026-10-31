@@ -61,6 +61,9 @@ export const NearbyFoodSection: React.FC = () => {
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="375"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
 
